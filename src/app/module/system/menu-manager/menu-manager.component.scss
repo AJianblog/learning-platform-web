@@ -1,0 +1,40 @@
+.menu-manager-box {
+  display: flex;
+  .menu-manager-menu-box {
+    width: 25%;
+    background-color: #ffffff;
+    overflow: auto;
+    padding: 4px;
+  }
+
+  .menu-show-info-box {
+    flex: 1;
+    background-color: #ffffff;
+    margin-left: 8px;
+    padding: 10px;
+
+    .menu-info-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+    }
+
+    .ant-btn:nth-child(n + 1) {
+      margin-left: 4px;
+    }
+  }
+}
+
+::ng-deep {
+  .custom-node.ng-star-inserted {
+    display: flex;
+    align-items: center;
+
+    .node-icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+  }
+}
