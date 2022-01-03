@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "install-lib": "npm install file:libs/dynamic-form-0.0.1.tgz"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,8 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "dynamic-form": "file:libs/dynamic-form-0.0.1.tgz",
+    "ng-zorro-antd": "^12.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
