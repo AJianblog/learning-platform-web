@@ -1,0 +1,28 @@
+.mat-drawer {
+  min-width: 240px;
+}
+
+.drawer-container {
+  display: flex;
+  height: calc(100vh - 56px);
+  overflow: auto;
+  background-color: #f0f2f5;
+
+  ::ng-deep .mat-drawer-content {
+    width: 100%;
+  }
+
+  .nav-bar {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    background-color: #ffffff;
+  }
+
+  .drawer-main {
+    padding: 8px;
+    width: 100%;
+    height: calc(100vh - 96px);
+    overflow: auto;
+  }
+}
