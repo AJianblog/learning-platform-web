@@ -1,0 +1,56 @@
+<div class="full-container menu-manager-box">
+  <div class="menu-manager-menu-box">
+    <nz-tree
+      [nzData]="nodes"
+      nzDraggable
+      nzBlockNode
+      (nzOnDrop)="nzEvent($event)"
+      [nzTreeTemplate]="nzTreeTemplate"
+      (nzClick)="clickMenuHandle($event)"
+    >
+    </nz-tree>
+  </div>
+  <div class="menu-show-info-box">
+    <div class="menu-info-title">
+      <div>菜单信息</div>
+      <div>
+        <button nz-button (click)="addChildMenuHandle(titleInfo.add)">添加子菜单</button>
+        <button nz-button [disabled]="!menuInfo" (click)="addChildMenuHandle(titleInfo.edit)">编辑</button>
+        <button nz-button [disabled]="!menuInfo" (click)="deleteMenuHandle()">删除</button>
+      </div>
+    </div>
+    <nz-descriptions *ngIf="menuInfo" [nzTitle]="nzTitleTemplate" nzBordered [nzColumn]="{ xxl: 3, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }">
+      <nz-descriptions-item nzTitle="菜单名称">{{ menuInfo.menuName }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="菜单url">{{ menuInfo.url }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="菜单匹配规则">{{ menuInfo.regexpUrl }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="菜单类型">{{ menuInfo.type }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="菜单图标">{{ menuInfo.icon }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="菜单顺序">{{ menuInfo.position }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="父节点菜单">{{ menuInfo.parentMenuName }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="是否需要显示">{{ menuInfo.showMenu }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="是否禁用">{{ menuInfo.disabled }}</nz-descriptions-item>
+    </nz-descriptions>
+    <ng-template [ngIf]="!menuInfo">
+      <nz-empty nzNotFoundImage="simple"></nz-empty>
+    </ng-template>
+
+  </div>
+
+  <ng-template #nzTreeTemplate let-node let-origin="origin">
+    <div class="custom-node" (contextmenu)="contextMenu($event, menu)">
+      <mat-icon *ngIf="node.icon" [svgIcon]="node.icon" class="node-icon"></mat-icon>
+      <span>{{ node.title }}</span>
+    </div>
+  </ng-template>
+
+  <ng-template #nzTitleTemplate></ng-template>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item (click)="selectDropdown()">Action 1</li>
+      <li nz-menu-item (click)="selectDropdown()">Action 2</li>
+    </ul>
+  </nz-dropdown-menu>
+
+
+</div>
