@@ -49,6 +49,12 @@ export class MenuEditComponent implements OnInit {
       nzSpan: 24
     },
     {
+      name: 'code',
+      type: FormFieldTypeEnum.input,
+      label: '菜单标识',
+      nzSpan: 24
+    },
+    {
       name: 'url',
       type: FormFieldTypeEnum.input,
       label: '菜单url',
