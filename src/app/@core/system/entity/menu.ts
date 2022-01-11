@@ -14,6 +14,11 @@ export interface Menu {
   menuName: string;
 
   /**
+   * 菜单标识
+   */
+  code: string;
+
+  /**
    * 菜单url
    */
   url: string;
