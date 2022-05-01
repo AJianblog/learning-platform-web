@@ -21,7 +21,7 @@ export interface User {
   /**
    * 昵称
    */
-  nickName: string;
+  nickname: string;
 
   token: string;
 
