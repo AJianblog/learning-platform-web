@@ -1,8 +1,7 @@
-<he-dynamic-form
-  [formFields]="menuField"
-  [formConfig]="formConfig"
+<h-form
+  [config]="menuField"
   (formGroupInit)="formGroupInit($event)"
-></he-dynamic-form>
+></h-form>
 <div class="operator-box">
   <button nz-button nzType="primary" (click)="saveMenu()">保存</button>
 </div>
