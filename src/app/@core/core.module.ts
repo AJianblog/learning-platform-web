@@ -8,12 +8,15 @@ import { MenuServiceImpl } from "./system/service/impl/menu.service.impl";
 import { MenuService } from "./system/service/menu.service";
 import { ArticleTypeService } from "./article/service/article-type.service";
 import { ArticleTypeImplService } from "./article/service/impl/article-type-impl.service";
+import { ArticleTagService } from "./article/service/article-tag.service";
+import { ArticleTagImplService } from "./article/service/impl/article-tag-impl.service";
 
 
 const SERVICE = [
   { provide: UserService, useClass: UserImplService },
   { provide: MenuService, useClass: MenuServiceImpl },
-  { provide: ArticleTypeService, useClass: ArticleTypeImplService }
+  { provide: ArticleTypeService, useClass: ArticleTypeImplService },
+  { provide: ArticleTagService, useClass: ArticleTagImplService }
 ]
 
 @NgModule({
