@@ -24,7 +24,7 @@ export class AdminLayoutComponent implements OnInit {
    */
   findUserMenu() {
     this.menuService.findUserMenu().subscribe(data => {
-      this.menus = data.data;
+      this.menus = data;
     })
   }
 
