@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../@core/system/service/user.service";
-import { setToken, setUserId } from "../../utils/localStorageMessage";
+import { setToken, setUserId, setUserInfo } from "../../utils/localStorageMessage";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
    */
   loginFormGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.loginFormGroup = this.fb.group({
       account: [null, Validators.compose([Validators.required])],
       password: [null, Validators.compose([Validators.required])]
@@ -33,9 +34,10 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.userService.login(this.loginFormGroup.value).subscribe(data => {
-      console.log(data)
-      setToken(data.data.token);;
-      setUserId(data.data.userId);
+      setToken(data.token);
+      setUserId(data.userId);
+      setUserInfo(JSON.stringify(data))
+      this.router.navigate(['/'])
     });
   }
 
