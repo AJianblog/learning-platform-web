@@ -5,6 +5,8 @@ import { UserService } from "../user.service";
 import { ProxyPrefix } from "../../../common/enum/ProxyPrefix";
 import { ResponseResult } from "../../../common/entity/ResponseResult";
 import { User } from "../../entity/User";
+import { PageParam } from "../../../common/entity/PageParam";
+import { PageResult } from "../../../common/entity/PageResult";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,8 @@ import { User } from "../../entity/User";
 export class UserImplService extends UserService {
 
   private url: string = `${ProxyPrefix.api}/auth`;
+
+  private userUrl: string = `${ProxyPrefix.api}/user`;
 
   constructor(private http: HttpClient) {
     super();
@@ -21,13 +25,13 @@ export class UserImplService extends UserService {
    * 用户登录
    * @param login 登录信息
    */
-  login(login: { account: string, password: string }): Observable<ResponseResult<User>> {
+  login(login: { account: string, password: string }): Observable<User> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded'
       })
     }
-    return this.http.post<ResponseResult<User>>(`${this.url}/login`, `username=${login.account}&password=${login.password}`, httpOptions);
+    return this.http.post<User>(`${this.url}/login`, `username=${login.account}&password=${login.password}`, httpOptions);
   }
 
   /**
@@ -61,5 +65,21 @@ export class UserImplService extends UserService {
    */
   verifyTicket(ticket: string, rand: string): Observable<ResponseResult<any>> {
     return this.http.get<ResponseResult<any>>(`${this.url}/verifyTicket/${ticket}/${rand}`);
+  }
+
+  /**
+   * 用户分页
+   * @param pageParam 分页条件
+   */
+    userPage(pageParam: PageParam<User>): Observable<PageResult<User>> {
+    return this.http.post<PageResult<User>>(`${this.userUrl}/userPage`, pageParam);
+  }
+
+  /**
+   * 创建用户
+   * @param user 用户信息
+   */
+  createUser(user: User): Observable<ResponseResult<User>> {
+    return this.http.post<ResponseResult<User>>(`${this.userUrl}/a`, user);
   }
 }

@@ -7,13 +7,13 @@ export abstract class MenuService {
   /**
    * 查询用户的菜单数据
    */
-  abstract findUserMenu(): Observable<ResponseResult<Menu[]>>;
+  abstract findUserMenu(): Observable<Menu[]>;
 
   /**
    * 通过菜单id查询菜单信息
    * @param id 菜单id
    */
-  abstract findMenuById(id: string | undefined): Observable<ResponseResult<Menu>>;
+  abstract findMenuById(id: string | undefined): Observable<Menu>;
 
   /**
    * 新增菜单

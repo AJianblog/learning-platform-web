@@ -1,12 +1,14 @@
 import {Observable} from 'rxjs';
 import { ResponseResult } from "../../common/entity/ResponseResult";
 import { User } from "../entity/User";
+import { PageParam } from "../../common/entity/PageParam";
+import { PageResult } from "../../common/entity/PageResult";
 
 export abstract class UserService {
   /**
    * 用户登录
    */
-  abstract login(login: { account: string, password: string }): Observable<ResponseResult<User>>;
+  abstract login(login: { account: string, password: string }): Observable<User>;
 
   /**
    * 用户注册
@@ -32,5 +34,16 @@ export abstract class UserService {
    * @param rand 验证码客户端验证回调的随机串
    */
   abstract verifyTicket(ticket: string, rand: string): Observable<ResponseResult<any>>;
+
+  /**
+   * 创建用户
+   * @param user 用户信息
+   */
+  abstract createUser(user: User): Observable<ResponseResult<User>>;
+  /**
+   * 用户分页
+   * @param pageParam 分页条件
+   */
+  abstract userPage(pageParam: PageParam<User>): Observable<PageResult<User>>;
 
 }
