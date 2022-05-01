@@ -1,5 +1,32 @@
 <mat-toolbar color="primary" class="mat-elevation-z6 toolbar">
-  <button mat-button>个人学习平台</button>
-  <button mat-button>系统管理</button>
+  <div class="header-left">
+    <div class="logo">
+      <img src="assets/logo/logo.svg" alt="logo" />
+    </div>
+    <div class="title">每日一学</div>
+  </div>
+  <div *ngIf="!isLogin" class="login-box">
+    <div routerLink="/login">登陆</div>
+  </div>
+  <div *ngIf="isLogin">
+    <nz-avatar
+      class="avatar"
+      [nzGap]="4"
+      [nzText]="nickName"
+      [ngStyle]="{ 'background-color': '#7265e6' }"
+      nzSize="large"
+      style="vertical-align: middle;"
+      nz-dropdown
+      nzTrigger="click"
+      [nzDropdownMenu]="menu"
+    >
+    </nz-avatar>
+  </div>
 </mat-toolbar>
-<div class="toolbar-empty-boox"></div>
+<div class="toolbar-empty-box"></div>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item routerLink="/system">后台管理</li>
+    <li nz-menu-item (click)="loginOut()">注销</li>
+  </ul>
+</nz-dropdown-menu>
