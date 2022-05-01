@@ -6,11 +6,14 @@ import { DomSanitizer } from "@angular/platform-browser";
 import { LoadSvgResource } from "../utils/loadSvgResource";
 import { MenuServiceImpl } from "./system/service/impl/menu.service.impl";
 import { MenuService } from "./system/service/menu.service";
+import { ArticleTypeService } from "./article/service/article-type.service";
+import { ArticleTypeImplService } from "./article/service/impl/article-type-impl.service";
 
 
 const SERVICE = [
   { provide: UserService, useClass: UserImplService },
-  { provide: MenuService, useClass: MenuServiceImpl }
+  { provide: MenuService, useClass: MenuServiceImpl },
+  { provide: ArticleTypeService, useClass: ArticleTypeImplService }
 ]
 
 @NgModule({
