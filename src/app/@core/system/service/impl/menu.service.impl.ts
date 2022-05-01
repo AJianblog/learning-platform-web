@@ -19,16 +19,16 @@ export class MenuServiceImpl extends MenuService {
   /**
    * 查询用户的菜单数据
    */
-  findUserMenu(): Observable<ResponseResult<Menu[]>> {
-    return this.http.get<ResponseResult<Menu[]>>(`${this.url}/findUserMenu`);
+  findUserMenu(): Observable<Menu[]> {
+    return this.http.get<Menu[]>(`${this.url}/findUserMenu`);
   }
 
   /**
    * 通过菜单id查询菜单信息
    * @param id 菜单id
    */
-  findMenuById(id: string | undefined): Observable<ResponseResult<Menu>> {
-    return this.http.get<ResponseResult<any>>(`${this.url}/findByMenuId/${id}`);
+  findMenuById(id: string | undefined): Observable<Menu> {
+    return this.http.get<any>(`${this.url}/findByMenuId/${id}`);
   }
 
   /**
