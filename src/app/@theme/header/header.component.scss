@@ -10,9 +10,44 @@
   right: 0;
   color: #ffffff;
   z-index: 5;
+  font-size: .9rem;
+  display: flex;
+  justify-content: space-between;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .logo img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .title {
+      margin-left: 10px;
+    }
+  }
+
+  .login-box {
+    cursor: pointer;
+
+    &:hover {
+      color: #21d4fd;
+    }
+  }
+
+  .avatar {
+    cursor: pointer;
+  }
 }
 
-.toolbar-empty-boox {
+.toolbar-empty-box {
   height: 56px;
   width: 100%;
+}
+
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
 }
