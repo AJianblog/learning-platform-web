@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "install-lib": "npm install file:libs/dynamic-form-0.0.1.tgz"
+    "install-lib": "npm install file:libs/dynamic-table-0.0.1.tgz file:libs/core-0.0.1.tgz file:libs/form-render-0.0.1.tgz"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +21,9 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-    "dynamic-form": "file:libs/dynamic-form-0.0.1.tgz",
+    "core": "file:libs/core-0.0.1.tgz",
+    "dynamic-table": "file:libs/dynamic-table-0.0.1.tgz",
+    "form-render": "file:libs/form-render-0.0.1.tgz",
     "ng-zorro-antd": "^12.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
