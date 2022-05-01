@@ -3,10 +3,11 @@
   <mat-drawer #drawer mode="side">
     <app-side-menu [menus]="menus"></app-side-menu>
   </mat-drawer>
+  <div class="breadcrumb">
+    面包屑
+  </div>
   <div class="nav-bar">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon svgIcon="menu"></mat-icon>
-    </button>
+    <span nz-icon nzType="menu" nzTheme="outline" class="menu" (click)="drawer.toggle()"></span>
   </div>
   <div class="drawer-main">
     <router-outlet></router-outlet>
