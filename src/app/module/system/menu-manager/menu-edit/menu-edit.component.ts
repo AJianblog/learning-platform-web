@@ -1,13 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormField } from "dynamic-form/lib/entity/FormField";
-import { TreeSelectFormField } from "dynamic-form/lib/entity/TreeSelectFormField";
+import { FormField } from "form-render/lib/entity/FormField";
+import { TreeSelectFormField } from "form-render/lib/entity/TreeSelectFormField";
 import { NzTreeNodeOptions } from "ng-zorro-antd/tree";
 import { NzTreeNode } from "ng-zorro-antd/core/tree";
-import { FormFieldTypeEnum } from "dynamic-form";
 import { FormGroup } from "@angular/forms";
 import { MenuService } from "../../../../@core/system/service/menu.service";
 import { NzDrawerRef } from "ng-zorro-antd/drawer";
 import { Menu } from "../../../../@core/system/entity/menu";
+import { SelectField } from "form-render/lib/entity/SelectField";
+import { FormFieldEnum } from "form-render";
 
 @Component({
   selector: 'app-menu-edit',
@@ -28,9 +29,10 @@ export class MenuEditComponent implements OnInit {
   get nodes(): NzTreeNodeOptions[] {
     return this.treeSelectNodes;
   }
+
   set nodes(treeSelectNodes: NzTreeNodeOptions[]) {
     this.treeSelectNodes = treeSelectNodes;
-    const parentMenu: TreeSelectFormField | undefined = this.menuField.find(item => item.name === 'parentMenuId')
+    const parentMenu: TreeSelectFormField | undefined = this.menuField.find(item => item.key === 'parentMenuId')
     if (parentMenu) {
       parentMenu.treeSelectNodes = treeSelectNodes;
     }
@@ -43,32 +45,33 @@ export class MenuEditComponent implements OnInit {
 
   menuField: FormField[] = [
     {
-      name: 'menuName',
-      type: FormFieldTypeEnum.input,
-      label: '菜单名称',
-      nzSpan: 24
+      key: 'menuName',
+      type: 'string',
+      component: FormFieldEnum.INPUT,
+      label: '菜单名称'
     },
     {
-      name: 'code',
-      type: FormFieldTypeEnum.input,
-      label: '菜单标识',
-      nzSpan: 24
+      key: 'code',
+      type: 'string',
+      component: FormFieldEnum.INPUT,
+      label: '菜单标识'
     },
     {
-      name: 'url',
-      type: FormFieldTypeEnum.input,
-      label: '菜单url',
-      nzSpan: 24
+      key: 'url',
+      type: 'string',
+      component: FormFieldEnum.INPUT,
+      label: '菜单url'
     },
     {
-      name: 'regexpUrl',
-      type: FormFieldTypeEnum.input,
-      label: '菜单匹配规则',
-      nzSpan: 24
+      key: 'regexpUrl',
+      type: 'string',
+      component: FormFieldEnum.INPUT,
+      label: '菜单匹配规则'
     },
     {
-      name: 'type',
-      type: FormFieldTypeEnum.select,
+      key: 'type',
+      component: FormFieldEnum.SELECT,
+      type: 'string',
       label: '菜单类型',
       options: [
         {
@@ -77,16 +80,17 @@ export class MenuEditComponent implements OnInit {
         }
       ],
       nzSpan: 24
+    } as SelectField,
+    {
+      key: 'position',
+      type: 'string',
+      component: FormFieldEnum.INPUT,
+      label: '菜单顺序'
     },
     {
-      name: 'position',
-      type: FormFieldTypeEnum.input,
-      label: '菜单顺序',
-      nzSpan: 24
-    },
-    {
-      name: 'parentMenuId',
-      type: FormFieldTypeEnum.treeSelect,
+      key: 'parentMenuId',
+      type: 'string',
+      component: FormFieldEnum.TREE_SELECT,
       label: '上级菜单',
       nzSpan: 24,
       treeSelectNodes: []
@@ -113,19 +117,20 @@ export class MenuEditComponent implements OnInit {
       this.menuService.updateMenu({
         ...this.menuInfo,
         ...this.formGroup?.value
-      }).subscribe(res => {
-        this.nzDrawerRef.close({
-          type: 'handleOk'
-        })
+      }).subscribe(() => {
+        this.close()
       })
     } else {
-      this.menuService.addMenu(this.formGroup?.value).subscribe(res => {
-        this.nzDrawerRef.close({
-          type: 'handleOk'
-        })
+      this.menuService.addMenu(this.formGroup?.value).subscribe(() => {
+        this.close()
       })
     }
+  }
 
+  close() {
+    this.nzDrawerRef.close({
+      type: 'handleOk'
+    })
   }
 
 }

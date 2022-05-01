@@ -45,7 +45,7 @@ export class MenuManagerComponent implements OnInit {
    */
   findUserMenu() {
     this.menuService.findUserMenu().subscribe(data => {
-      this.nodes = data.data.map((item: Menu) => {
+      this.nodes = data.map((item: Menu) => {
         return this.formatterMenu(item);
       });
     })
@@ -82,7 +82,7 @@ export class MenuManagerComponent implements OnInit {
 
   findMenuById(menuId: string | undefined) {
     this.menuService.findMenuById(menuId).subscribe(data => {
-      this.menuInfo = data.data;
+      this.menuInfo = data;
     })
   }
 
