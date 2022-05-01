@@ -12,11 +12,28 @@
     width: 100%;
   }
 
+  .breadcrumb {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+    padding: 0 0.5rem;
+  }
+
   .nav-bar {
     width: 100%;
     position: relative;
     z-index: 5;
     background-color: #ffffff;
+    padding: 0.25rem 0.5rem;
+    height: 32px;
+    display: flex;
+    align-items: center;
+
+    .menu {
+      cursor: pointer;
+    }
   }
 
   .drawer-main {
