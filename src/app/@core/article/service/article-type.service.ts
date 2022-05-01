@@ -22,6 +22,8 @@ export abstract class ArticleTypeService {
    */
   abstract page(pageParam: PageParam<ArticleType>): Observable<PageResult<ArticleType>>;
 
+  abstract findAllArticleType(): Observable<ArticleType[]>;
+
   /**
    * 更新文章分类
    * @param articleType 文章分类信息

@@ -34,6 +34,13 @@ export class ArticleTypeImplService implements ArticleTypeService {
   }
 
   /**
+   * 查询所有的文章分类
+   */
+  findAllArticleType(): Observable<ArticleType[]> {
+    return this.http.get<ArticleType[]>(`${this.url}/findAllArticleType`);
+  }
+
+  /**
    * 删除文章分类
    * @param articleTypeId 文章分类id
    */
