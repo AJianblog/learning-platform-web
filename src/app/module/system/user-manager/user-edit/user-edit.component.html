@@ -1,0 +1,7 @@
+<h-form
+  [config]="userField"
+  (formGroupInit)="formGroupInit($event)"
+></h-form>
+<div class="operator-box">
+  <button nz-button nzType="primary" (click)="saveUser()">保存</button>
+</div>
