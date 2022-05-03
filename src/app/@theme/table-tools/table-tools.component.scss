@@ -1,0 +1,21 @@
+.table-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding-bottom: 8px;
+  .table-title-icon {
+    display: inline-block;
+    width: 4px;
+    height: 14px;
+    border-radius: 4px;
+    background: #673ab7;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  .h-button:nth-child(n + 2) {
+    margin-left: 4px;
+  }
+}
+
