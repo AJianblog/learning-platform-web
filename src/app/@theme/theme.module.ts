@@ -6,23 +6,28 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { TableToolsComponent } from './table-tools/table-tools.component';
+import { CoreModule } from "core";
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SideMenuComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    TableToolsComponent
   ],
   imports: [
     MaterialModule,
     ZorroModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    CoreModule
   ],
   exports: [
     HeaderComponent,
     SideMenuComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    TableToolsComponent
   ]
 })
 export class ThemeModule {
