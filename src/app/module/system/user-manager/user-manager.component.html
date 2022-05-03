@@ -1,9 +1,11 @@
 <div class="full-container">
   <div class="card pagination-table">
-    <he-pagination-table
-      [config]="config"
-      (toolsClickEvent)="toolsClickEvent($event)"
-      (tableClickEvent)="tableClickEvent($event)"
-    ></he-pagination-table>
+    <app-table-tools title="查询结果" [tools]="tools" (toolClick)="toolsClick($event)"></app-table-tools>
+    <h-table
+      [config]="tableConfig"
+      [columns]="columns"
+      (pageIndexChange)="pageIndexChange($event)"
+      (pageSizeChange)="pageSizeChange($event)"
+    ></h-table>
   </div>
 </div>

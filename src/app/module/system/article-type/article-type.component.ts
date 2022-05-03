@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PaginationTableConfig } from "dynamic-table/lib/entity/paginationTableConfig";
-import { ColumnTypeEnum } from "dynamic-table";
-import { Button } from "dynamic-table/lib/entity/Button";
 import { NzDrawerService } from "ng-zorro-antd/drawer";
 import { ArticleTypeInfoComponent } from "./article-type-info/article-type-info.component";
 import { ArticleTypeService } from "../../../@core/article/service/article-type.service";
 import { PageResult } from "../../../@core/common/entity/PageResult";
 import { ArticleType } from "../../../@core/article/entity/ArticleType";
 import { NzModalService } from "ng-zorro-antd/modal";
+import { TableColumnEnum, TableConfig } from "table-render";
+import { BaseColumn } from "table-render/lib/entity/BaseColumn";
+import { OperatorColumn } from "table-render/lib/entity/OperatorColumn";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { Button } from "core/lib/entity/Button";
 
 @Component({
   selector: 'app-article-type-manager',
@@ -16,58 +18,68 @@ import { NzModalService } from "ng-zorro-antd/modal";
 })
 export class ArticleTypeComponent implements OnInit {
 
-  config: PaginationTableConfig = {
-    toolsConfig: {
-      title: '查询结果',
-      tools: [
-        {
-          name: '新增',
-          key: 'add'
-        }
-      ]
+  tools: Button[] = [
+    {
+      name: '新增',
+      key: 'add'
+    }
+  ]
+
+  tableConfig: TableConfig = {
+    data: [],
+    pageIndex: 1,
+    total: 0,
+    pageSize: 20,
+    showSizeChanger: true
+  }
+
+  columns: BaseColumn[] = [
+    {
+      key: 'articleTypeName',
+      title: '文章分类名称',
+      type: 'string',
+      component: TableColumnEnum.TEXT
     },
-    tableConfig: {
-      dataSource: [],
-      columns: [
+    {
+      type: 'object',
+      key: 'operator',
+      title: '操作',
+      component: TableColumnEnum.OPERATOR,
+      operators: [
         {
-          key: 'articleTypeName',
-          name: '文章分类名称',
-          type: ColumnTypeEnum.textCell
+          name: '编辑',
+          key: 'edit'
         },
         {
-          type: ColumnTypeEnum.operatorCell,
-          key: 'operator',
-          name: '操作',
-          operators: [
-            {
-              name: '编辑',
-              key: 'edit'
-            },
-            {
-              name: '删除',
-              key: 'delete'
-            }
-          ]
+          name: '删除',
+          key: 'delete'
         }
       ]
-    }
-  }
+    } as OperatorColumn
+  ]
 
   constructor(private drawerService: NzDrawerService,
               private articleTypeService: ArticleTypeService,
-              private modalService: NzModalService) { }
-
-  ngOnInit(): void {
-    this.page();
+              private modalService: NzModalService,
+              private router: Router,
+              private route: ActivatedRoute) {
+    route.queryParamMap.subscribe((paramMap: ParamMap) => {
+      this.tableConfig.pageIndex = Number(paramMap.get('pageIndex')) || 1;
+      this.tableConfig.pageSize = Number(paramMap.get('pageSize')) || 20;
+      this.page();
+    })
   }
 
-  toolsClickEvent(button: Button) {
+  ngOnInit(): void {
+  }
+
+  toolsClick(button: Button) {
     if (button.key === 'add') {
       this.articleTypeInfoDrawer('新增文章分类')
     }
   }
 
-  tableClickEvent(data: any) {
+  cellClick(data: any) {
     if (data.operator.key === 'delete') {
       this.delete(data.rowData)
     } else if (data.operator.key === 'edit') {
@@ -104,13 +116,14 @@ export class ArticleTypeComponent implements OnInit {
    */
   page() {
     this.articleTypeService.page({
-      pageSize: 20,
-      currentPage: 1,
+      pageSize: this.tableConfig.pageSize,
+      currentPage: this.tableConfig.pageIndex,
       param: {
         articleTypeName: ''
       } as ArticleType
     }).subscribe((data: PageResult<ArticleType>) => {
-      this.config.tableConfig.dataSource = data.records;
+      this.tableConfig.data = data.records;
+      this.tableConfig.total = data.total;
     })
   }
 
@@ -131,6 +144,26 @@ export class ArticleTypeComponent implements OnInit {
           })
         })
       }
+    })
+  }
+
+  pageIndexChange(pageIndex: number) {
+    this.router.navigate(['./'], {
+      queryParams: {
+        ...this.route.snapshot.queryParams,
+        pageIndex: pageIndex
+      },
+      relativeTo: this.route
+    })
+  }
+
+  pageSizeChange(pageSize: number) {
+    this.router.navigate(['./'], {
+      queryParams: {
+        ...this.route.snapshot.queryParams,
+        pageSize: pageSize
+      },
+      relativeTo: this.route
     })
   }
 
