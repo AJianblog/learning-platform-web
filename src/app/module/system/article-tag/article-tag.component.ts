@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PaginationTableConfig } from "dynamic-table/lib/entity/paginationTableConfig";
-import { ColumnTypeEnum } from "dynamic-table";
-import { Button } from "dynamic-table/lib/entity/Button";
 import { ArticleTag } from "../../../@core/article/entity/ArticleTag";
 import { ArticleTypeService } from "../../../@core/article/service/article-type.service";
 import { ArticleType } from "../../../@core/article/entity/ArticleType";
@@ -10,6 +7,11 @@ import { ArticleTagInfoComponent } from "./article-tag-info/article-tag-info.com
 import { ArticleTagService } from "../../../@core/article/service/article-tag.service";
 import { PageResult } from "../../../@core/common/entity/PageResult";
 import { NzModalService } from "ng-zorro-antd/modal";
+import { BaseColumn } from "table-render/lib/entity/BaseColumn";
+import { TableColumnEnum, TableConfig } from "table-render";
+import { OperatorColumn } from "table-render/lib/entity/OperatorColumn";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { Button } from "core/lib/entity/Button";
 
 @Component({
   selector: 'app-tag-type',
@@ -17,46 +19,54 @@ import { NzModalService } from "ng-zorro-antd/modal";
   styleUrls: ['./article-tag.component.scss']
 })
 export class ArticleTagComponent implements OnInit {
-  config: PaginationTableConfig = {
-    toolsConfig: {
-      title: '查询结果',
-      tools: [
-        {
-          name: '新增',
-          key: 'add'
-        }
-      ]
-    },
-    tableConfig: {
-      dataSource: [],
-      columns: [
-        {
-          key: 'articleTagName',
-          name: '文章标签名称',
-          type: ColumnTypeEnum.textCell
-        },
-        {
-          key: 'articleTypeName',
-          name: '文章分类名称',
-          type: ColumnTypeEnum.textCell
-        },
-        {
-          type: ColumnTypeEnum.operatorCell,
-          key: 'operator',
-          name: '操作',
-          operators: [
-            {
-              name: '编辑',
-              key: 'edit'
-            },
-            {
-              name: '删除',
-              key: 'delete'
-            }
-          ]
-        }
-      ]
+  tools: Button[] = [
+    {
+      name: '新增',
+      key: 'add'
     }
+  ]
+
+  columns: BaseColumn[] = [
+    {
+      title: '文章标签名称',
+      key: 'articleTagName',
+      type: 'string',
+      component: TableColumnEnum.TEXT
+    },
+    {
+      key: 'articleTypeId',
+      title: '文章分类名称',
+      type: 'string',
+      component: TableColumnEnum.TEXT,
+      formatter: (articleTypeId: string) => {
+        const articleType = this.articleType.find(item => item.articleTypeId === articleTypeId);
+        return articleType && articleType.articleTypeName || '-'
+      }
+    },
+    {
+      type: 'object',
+      key: 'operator',
+      title: '操作',
+      component: TableColumnEnum.OPERATOR,
+      operators: [
+        {
+          name: '编辑',
+          key: 'edit'
+        },
+        {
+          name: '删除',
+          key: 'delete'
+        }
+      ]
+    } as OperatorColumn
+  ];
+
+  tableConfig: TableConfig = {
+    data: [],
+    total: 0,
+    pageIndex: 1,
+    pageSize: 20,
+    showSizeChanger: true
   }
 
   articleType: ArticleType[] = []
@@ -65,12 +75,19 @@ export class ArticleTagComponent implements OnInit {
   constructor(private articleTypeService: ArticleTypeService,
               private drawerService: NzDrawerService,
               private articleTagService: ArticleTagService,
-              private modalService: NzModalService) {
+              private modalService: NzModalService,
+              private router: Router,
+              private route: ActivatedRoute) {
+    this.route.queryParamMap.subscribe((params: ParamMap) => {
+      debugger
+      this.tableConfig.pageSize = Number(params.get('pageSize')) || 20;
+      this.tableConfig.pageIndex = Number(params.get('pageIndex')) || 1;
+      this.page();
+    })
   }
 
   ngOnInit(): void {
     this.findAllArticleType();
-    this.page();
   }
 
   toolsClickEvent(button: Button) {
@@ -85,7 +102,7 @@ export class ArticleTagComponent implements OnInit {
     })
   }
 
-  tableClickEvent(data: any) {
+  cellClick(data: any) {
     if (data.operator.key === 'delete') {
       this.delete(data.rowData);
     } else if (data.operator.key === 'edit') {
@@ -95,13 +112,14 @@ export class ArticleTagComponent implements OnInit {
 
   page() {
     this.articleTagService.page({
-      currentPage: 1,
-      pageSize: 10,
+      currentPage: this.tableConfig.pageIndex,
+      pageSize: this.tableConfig.pageSize,
       param: {
         articleTagName: ''
       } as any
     }).subscribe((data: PageResult<ArticleTag>) => {
-      this.config.tableConfig.dataSource = data.records;
+      this.tableConfig.data = data.records;
+      this.tableConfig.total = data.total * 20;
     })
   }
 
@@ -142,6 +160,27 @@ export class ArticleTagComponent implements OnInit {
         })
       }
     })
+  }
+
+  pageSizeChange(pageSize: number) {
+    const queryParams = this.route.snapshot.queryParams
+    this.router.navigate(['./'], {
+      queryParams: {
+        ...queryParams,
+        pageSize: pageSize
+      },
+      relativeTo: this.route
+    }).then()
+  }
+
+  pageIndexChange(pageIndex: number) {
+    this.router.navigate(['./'], {
+      queryParams: {
+        ...this.route.snapshot.queryParams,
+        pageIndex: pageIndex
+      },
+      relativeTo: this.route
+    }).then()
   }
 
 }

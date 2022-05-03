@@ -20,25 +20,33 @@ export class UserEditComponent implements OnInit {
       key: 'account',
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '账户名称'
+      label: '账户名称',
+      labelSpan: 3,
+      labelXXl: 2
     },
     {
       key: 'password',
       component: FormFieldEnum.INPUT,
       type: 'string',
-      label: '密码'
+      label: '密码',
+      labelSpan: 3,
+      labelXXl: 2
     },
     {
       key: 'nickname',
       component: FormFieldEnum.INPUT,
       type: 'string',
-      label: '昵称'
+      label: '昵称',
+      labelSpan: 3,
+      labelXXl: 2
     },
     {
       key: 'email',
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '邮箱'
+      label: '邮箱',
+      labelSpan: 3,
+      labelXXl: 2
     }
   ]
 
