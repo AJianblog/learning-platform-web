@@ -1,0 +1,14 @@
+<div class="table-tools">
+  <div class="table-title">
+    <em class="table-title-icon"></em>
+    {{ title }}
+  </div>
+  <div class="table-actions">
+    <h-button
+      *ngFor="let tool of tools"
+      [config]="tool"
+      class="h-button"
+      (click)="clickHandle(tool)"
+    >{{ tool.name }}</h-button>
+  </div>
+</div>
