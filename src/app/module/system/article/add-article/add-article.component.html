@@ -1,0 +1,10 @@
+<form class="full-container article-box" nz-form [formGroup]="formGroup">
+  <nz-form-item>
+    <nz-form-label>文章名称</nz-form-label>
+    <nz-form-control class="article-title">
+      <input nz-input formControlName="articleTitle" placeholder="文章名称">
+      <button nz-button nzType="primary" class="release-btn" (click)="release()">发布</button>
+    </nz-form-control>
+  </nz-form-item>
+  <h-editor *ngIf="lazy" [formGroup]="formGroup" key="articleValue" [options]="options"></h-editor>
+</form>

@@ -1,0 +1,25 @@
+.article-box {
+  background-color: #ffffff;
+  padding: 1rem .5rem;
+
+  .release-btn {
+    margin-left: .4rem;
+  }
+
+}
+
+::ng-deep {
+  .article-box {
+    .h-editor {
+      height: calc(100% - 56px);
+    }
+  }
+
+  .CodeMirror-sizer {
+    //margin-left: 29px !important;
+  }
+
+  .article-title .ant-form-item-control-input-content{
+    display: flex;
+  }
+}

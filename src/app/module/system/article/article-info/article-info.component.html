@@ -1,0 +1,8 @@
+<h-form
+  [config]="formFields"
+  (formGroupInit)="formGroupInit($event)"
+  (modelChange)="modelChange($event)"
+></h-form>
+<div class="flex justify-end">
+  <button nz-button nzType="primary" (click)="save()">保存</button>
+</div>
