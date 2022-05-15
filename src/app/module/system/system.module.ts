@@ -9,7 +9,7 @@ import { MenuEditComponent } from './menu-manager/menu-edit/menu-edit.component'
 import { ReactiveFormsModule } from "@angular/forms";
 import { UserManagerComponent } from './user-manager/user-manager.component';
 import { UserEditComponent } from './user-manager/user-edit/user-edit.component';
-import { ArticleManagerComponent } from './article-manager/article-manager.component';
+import { ArticleComponent } from './article/article.component';
 import { ArticleTypeComponent } from './article-type/article-type.component';
 import { ArticleTypeInfoComponent } from './article-type/article-type-info/article-type-info.component';
 import { FormRenderModule } from "form-render";
@@ -17,6 +17,10 @@ import { ArticleTagComponent } from './article-tag/article-tag.component';
 import { ArticleTagInfoComponent } from './article-tag/article-tag-info/article-tag-info.component';
 import { ThemeModule } from "../../@theme/theme.module";
 import { TableRenderModule } from "table-render";
+import { EditorModule } from "editor";
+import { ArticleInfoComponent } from "./article/article-info/article-info.component";
+import { AddArticleComponent } from './article/add-article/add-article.component';
+import { EditArticleComponent } from './article/edit-article/edit-article.component';
 
 
 @NgModule({
@@ -25,11 +29,14 @@ import { TableRenderModule } from "table-render";
     MenuEditComponent,
     UserManagerComponent,
     UserEditComponent,
-    ArticleManagerComponent,
+    ArticleComponent,
     ArticleTypeComponent,
     ArticleTypeInfoComponent,
     ArticleTagComponent,
-    ArticleTagInfoComponent
+    ArticleTagInfoComponent,
+    ArticleInfoComponent,
+    AddArticleComponent,
+    EditArticleComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +46,8 @@ import { TableRenderModule } from "table-render";
     ReactiveFormsModule,
     FormRenderModule,
     ThemeModule,
-    TableRenderModule
+    TableRenderModule,
+    EditorModule
   ]
 })
 export class SystemModule {
