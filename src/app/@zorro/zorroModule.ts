@@ -10,6 +10,8 @@ import { NzEmptyModule } from "ng-zorro-antd/empty";
 import { NzDrawerModule } from "ng-zorro-antd/drawer";
 import { NzModalModule } from "ng-zorro-antd/modal";
 import { NzAvatarModule } from "ng-zorro-antd/avatar";
+import { NzFormModule } from "ng-zorro-antd/form";
+import { NzInputModule } from "ng-zorro-antd/input";
 
 const zorroModule = [
   NzButtonModule,
@@ -22,7 +24,9 @@ const zorroModule = [
   NzEmptyModule,
   NzDrawerModule,
   NzModalModule,
-  NzAvatarModule
+  NzAvatarModule,
+  NzFormModule,
+  NzInputModule
 ]
 
 @NgModule({
