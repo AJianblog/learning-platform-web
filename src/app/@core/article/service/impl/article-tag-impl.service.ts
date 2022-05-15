@@ -31,4 +31,8 @@ export class ArticleTagImplService implements ArticleTagService {
   updateArticle(articleTag: ArticleTag): Observable<ArticleTag> {
     return this.http.put<ArticleTag>(`${this.url}/updateArticle`, articleTag);
   }
+
+  findByArticleTypeId(articleTypeId: string): Observable<ArticleTag[]> {
+    return this.http.get<ArticleTag[]>(`${this.url}/findByArticleTypeId/${articleTypeId}`);
+  }
 }
