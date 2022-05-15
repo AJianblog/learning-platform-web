@@ -11,6 +11,8 @@ import { httpInterceptorProviders } from "./interceptor";
 import { OverlayModule } from "@angular/cdk/overlay";
 import { FormsModule } from '@angular/forms';
 import { ZorroModule } from "./@zorro/zorroModule";
+import { CoreModule as LowCodeCore } from 'core'
+import { EditorModule } from "editor";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ZorroModule } from "./@zorro/zorroModule";
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     ZorroModule.forRoot(),
-    FormsModule
+    LowCodeCore,
+    FormsModule,
+    EditorModule
   ],
   providers: [
     httpInterceptorProviders
