@@ -119,7 +119,7 @@ export class ArticleTagComponent implements OnInit {
       } as any
     }).subscribe((data: PageResult<ArticleTag>) => {
       this.tableConfig.data = data.records;
-      this.tableConfig.total = data.total * 20;
+      this.tableConfig.total = data.total;
     })
   }
 
