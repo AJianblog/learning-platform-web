@@ -28,4 +28,10 @@ export abstract class ArticleTagService {
    * @param articleTag
    */
   abstract updateArticle(articleTag: ArticleTag): Observable<ArticleTag>;
+
+  /**
+   * 根据文章类型id查询属于该类型下的所有标签
+   * @param articleTypeId 文章分类id
+   */
+  abstract findByArticleTypeId(articleTypeId: string): Observable<ArticleTag[]>;
 }
