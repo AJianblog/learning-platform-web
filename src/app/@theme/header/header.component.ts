@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getToken, getUserInfo } from "../../utils/localStorageMessage";
 import { Router } from "@angular/router";
+import { UserService } from "../../@core/system/service/user.service";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -19,8 +20,10 @@ export class HeaderComponent implements OnInit {
   }
 
   loginOut() {
-    localStorage.clear()
-    this.router.navigate(['/login'])
+    this.userService.loginOut().subscribe(() => {
+      localStorage.clear()
+      this.router.navigate(['/login'])
+    })
   }
 
   get nickName() {

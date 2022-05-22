@@ -11,6 +11,11 @@ export abstract class UserService {
   abstract login(login: { account: string, password: string }): Observable<User>;
 
   /**
+   * 退出登陆
+   */
+  abstract loginOut(): Observable<any>;
+
+  /**
    * 用户注册
    * @param register 注册信息
    */
