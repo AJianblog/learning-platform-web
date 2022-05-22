@@ -35,6 +35,14 @@ export class UserImplService extends UserService {
   }
 
   /**
+   * 退出登陆
+   */
+  loginOut(): Observable<any> {
+    return this.http.get(`${this.url}/loginOut`);
+  }
+
+
+  /**
    * 用户注册
    * @param register 注册信息
    */
