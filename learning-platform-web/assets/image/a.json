@@ -1,0 +1,42 @@
+{
+  "type": "application/json",
+  "parameters": [],
+  "jsonSchema": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "object",
+          "properties": {
+            "c": {
+              "type": "string"
+            },
+            "d": {
+              "type": "string"
+            }
+          },
+          "x-apifox-orders": [
+            "c",
+            "d"
+          ],
+          "required": [
+            "c",
+            "d"
+          ]
+        }
+      },
+      "x-apifox-orders": [
+        "a",
+        "b"
+      ],
+      "required": [
+        "a",
+        "b"
+      ]
+    }
+  }
+}
