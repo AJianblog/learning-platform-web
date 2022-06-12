@@ -1,31 +1,33 @@
 <div class="login-box">
-  <div class="m-bg">
-    <div class="m-bg-mask m-bg-mask0"></div>
-    <div class="m-bg-mask m-bg-mask1"></div>
-    <div class="m-bg-mask m-bg-mask2"></div>
-    <div class="m-bg-mask m-bg-mask3"></div>
-  </div>
-  <div class="card-box">
-    <div class="form-box">
-      <h2 class="login-title">
-        登陆
-      </h2>
+  <div class="login-container">
+    <div class="login-description">
+      <img class="login-box-bg" src="assets/logo/login-box-bg.svg" alt="图片">
+      <h2 class="login-name">每日一学</h2>
       <div>
-        <form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="userLogin()">
-          <mat-form-field>
-            <input matInput placeholder="邮箱" formControlName="account">
-            <mat-error *ngIf="account.invalid">{{getAccountErrorMessage()}}</mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input type="password" matInput placeholder="密码" formControlName="password">
-            <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-          </mat-form-field>
-          <div>
-            <button mat-raised-button type="submit" class="login-form-button">登录</button>
-          </div>
-        </form>
+      </div>
+    </div>
+    <div class="card-box">
+      <div class="form-box">
+        <div>
+          <form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="userLogin()">
+            <mat-form-field>
+              <input matInput placeholder="邮箱" formControlName="account">
+              <mat-error *ngIf="account.invalid">{{getAccountErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput placeholder="密码" formControlName="password">
+              <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <div>
+              <button nz-button type="submit" class="login-form-button" [nzLoading]="loginButtonLoading">
+                登录
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
 

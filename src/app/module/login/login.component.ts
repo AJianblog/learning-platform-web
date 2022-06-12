@@ -16,9 +16,11 @@ export class LoginComponent implements OnInit {
    */
   loginFormGroup: FormGroup;
 
+  loginButtonLoading: boolean = false;
+
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.loginFormGroup = this.fb.group({
-      account: [null, Validators.compose([Validators.required])],
+      account: [null, Validators.compose([Validators.required, Validators.email])],
       password: [null, Validators.compose([Validators.required])]
     });
   }
@@ -33,11 +35,16 @@ export class LoginComponent implements OnInit {
     if (this.loginFormGroup.invalid) {
       return;
     }
+    this.loginButtonLoading = true
     this.userService.login(this.loginFormGroup.value).subscribe(data => {
       setToken(data.token);
       setUserId(data.userId);
       setUserInfo(JSON.stringify(data))
       this.router.navigate(['/'])
+      this.loginButtonLoading = false;
+    }, (err) => {
+      this.loginButtonLoading = false;
+      console.error(err)
     });
   }
 
@@ -53,8 +60,12 @@ export class LoginComponent implements OnInit {
    * 得到登录账户的错误信息
    */
   getAccountErrorMessage() {
-    return this.account.hasError('required') ? '输入不能为空' :
-      '';
+    if (this.account.hasError('required')) {
+      return '输入不能为空'
+    } else if (this.account.hasError('email')) {
+      return '请输入正确的邮箱格式'
+    }
+    return ''
   }
 
   get account(): FormControl {
