@@ -7,74 +7,63 @@ button {
   overflow: hidden;
   min-height: 100vh;
   height: 100%;
-  background-color: #eceef1;
+  background-color: #ffffff;
   box-sizing: border-box;
   display: flex;
-  align-content: center;
-}
+  justify-content: center;
 
-.m-bg {
-  position: absolute;
-  left: 0;
-  top: -364px;
-  height: 1000px;
-  width: 100%;
-  -webkit-transform: skewY(-11deg);
-  -moz-transform: skewY(-11deg);
-  -ms-transform: skewY(-11deg);
-  -o-transform: skewY(-11deg);
-  transform: skewY(-11deg);
-  background-image: linear-gradient(-20deg, #21d4fd, #b721ff);
-
-  .m-bg-mask {
+  &:before {
     position: absolute;
-    height: 180px;
-  }
-
-  .m-bg-mask0 {
-    bottom: 0;
+    top: 0;
     left: 0;
-    width: 30%;
-    background-image: linear-gradient(120deg, #6ab3fd, #8ba3fd 102%);
+    width: 100%;
+    height: 100%;
+    margin-left: -48%;
+    background-image: url(../../../assets/logo/login-bg.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    content: "";
   }
 
-  .m-bg-mask1 {
-    bottom: 180px;
-    right: 0;
-    width: 36%;
-    background-image: linear-gradient(120deg, #28c5f5, #6682fe);
+  .login-container {
+    width: 85%;
+    padding: 2rem;
+    display: flex;
+
+    .login-description {
+      flex-basis: 50%;
+      flex-shrink: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .login-name {
+        color: #ffffff;
+        margin-top: 2rem;
+        font-size: 1.4rem;
+      }
+
+      .login-box-bg {
+        width: 50%;
+      }
+    }
   }
-
-  .m-bg-mask2 {
-    bottom: 540px;
-    left: 0;
-    width: 20%;
-    height: 240px;
-    background-image: linear-gradient(120deg, #8121ff, #5e5ef7);
-
-  }
-
-  .m-bg-mask3 {
-    bottom: 540px;
-    left: 20%;
-    width: 70%;
-    height: 240px;
-    background-image: linear-gradient(-225deg, #5f2bff, #6088fe 48%, #22ccf6);
-  }
-
 }
-
 
 .card-box {
+  flex-basis: 50%;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
-  width: 100%;
   align-items: center;
 
   .form-box {
     position: relative;
     padding: 1.5rem;
-    width: 20%;
+    width: 50%;
     background: #fff;
     z-index: 1;
     -webkit-border-radius: .4rem;
@@ -134,48 +123,4 @@ button {
   .mat-raised-button {
     line-height: 28px;
   }
-}
-
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-// Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) {
-
-  .card-box {
-    .form-box {
-      width: 45%;
-    }
-  }
-
-}
-
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) {
-
-  .card-box {
-    .form-box {
-      width: 55%;
-    }
-  }
-}
-
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
-  .card-box {
-    .form-box {
-      width: 65%;
-    }
-  }
-
-  .login-box {
-    padding-top: 4rem;
-  }
-
 }
