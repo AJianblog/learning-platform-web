@@ -1,0 +1,98 @@
+.article-preview-container {
+  max-width: 1280px;
+  flex: 1;
+  display: flex;
+  position: relative;
+  margin-top: 16px;
+
+  .left-container {
+    max-width: 970px;
+    flex: 1;
+
+    &.no-toc-menu {
+      max-width: 1280px;
+    }
+  }
+
+  .article-preview {
+    height: 100%;
+    flex: 1;
+
+    ::ng-deep {
+      .markdown-body {
+        //height: 100%;
+      }
+    }
+  }
+
+  .right-container {
+    position: relative;
+
+    .toc-container {
+      width: 290px;
+      flex-shrink: 0;
+      background: #ffffff;
+      margin-left: 16px;
+      border-radius: 4px;
+      position: fixed;
+
+      .toc-title {
+        padding: 20px 24px;
+        position: relative;
+        margin-bottom: 8px;
+
+        h2 {
+          margin-bottom: 0;
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 26px;
+          bottom: 0;
+          background-color: #e4e6eb;
+          height: 1px;
+          width: 260px;
+        }
+      }
+
+      .toc-menu-container {
+        padding: 0 20px 10px 10px;
+      }
+    }
+
+  }
+}
+
+.article-preview-bg {
+  background-color: #f4f5f5;
+  min-height: calc(100% - 56px);
+  display: flex;
+  justify-content: center;
+}
+
+.article-title-box {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eaecef;
+
+  .article-title {
+    //margin-bottom: 0;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .article-info {
+    display: flex;
+
+    > div {
+      margin-right: .5rem;
+
+      > span {
+        margin-right: .25rem;
+      }
+    }
+  }
+}

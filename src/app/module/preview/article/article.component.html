@@ -1,0 +1,33 @@
+<div class="article-preview-bg">
+  <div *ngIf="article" class="article-preview-container">
+    <div class="left-container" [class]="{ 'no-toc-menu': !tocMenu.length }">
+      <div class="article-title-box">
+        <h1 class="article-title">{{ article.articleTitle }}</h1>
+        <div class="article-info">
+          <div>
+            <span nz-icon nzType="field-time" nzTheme="outline"></span>
+            <span nz-tooltip nzTooltipTitle="创建时间">{{ article.createTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>
+          </div>
+          <div>
+            <span nz-icon nzType="field-time" nzTheme="outline"></span>
+            <span nz-tooltip nzTooltipTitle="最后更新时间">{{ article.lastUpdateTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>
+          </div>
+        </div>
+      </div>
+      <h-preview class="article-preview" [value]="article.articleValue" (tocMenu)="setTocMenu($event)"></h-preview>
+    </div>
+    <div
+      *ngIf="tocMenu.length"
+      class="right-container"
+    >
+      <div class="toc-container">
+        <div class="toc-title">
+          <h2>目录</h2>
+        </div>
+        <div class="toc-menu-container">
+          <app-toc-menu [tocMenu]="tocMenu"></app-toc-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
