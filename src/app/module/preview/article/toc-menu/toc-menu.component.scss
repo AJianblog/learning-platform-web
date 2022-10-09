@@ -1,0 +1,12 @@
+.menu-title {
+  padding: 8px;
+  cursor: pointer ;
+
+  &:hover {
+    background-color: #f7f8fa;
+  }
+}
+
+.menu-children {
+  padding-left: 18px;
+}
