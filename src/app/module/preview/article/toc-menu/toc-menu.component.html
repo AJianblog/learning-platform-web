@@ -1,0 +1,6 @@
+<div *ngFor="let menu of tocMenu">
+  <div class="menu-title" (click)="tocScrollTo(menu.title)">{{ menu.title }}</div>
+  <div *ngIf="menu.children.length" class="menu-children">
+    <app-toc-menu [tocMenu]="menu.children"></app-toc-menu>
+  </div>
+</div>
