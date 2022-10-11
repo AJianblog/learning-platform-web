@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getToken, getUserInfo } from "../../utils/localStorageMessage";
+import { getUserInfo, tokenIsExpire } from "../../utils/localStorageMessage";
 import { Router } from "@angular/router";
 import { UserService } from "../../@core/system/service/user.service";
 
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get isLogin() {
-    return !!getToken()
+    return tokenIsExpire();
   }
 
   loginOut() {
