@@ -25,4 +25,14 @@ export interface User {
 
   token: string;
 
+  /**
+   * token过期时间撮，为秒
+   */
+  exp: number;
+
+  /**
+   * token创建时间撮，为秒
+   */
+  iat: number;
+
 }

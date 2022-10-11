@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "install-lib": "npm install file:libs/dynamic-table-0.0.1.tgz file:libs/core-0.0.1.tgz file:libs/form-render-0.0.1.tgz file:libs/table-render-0.0.1.tgz file:libs/editor-0.0.1.tgz"
+    "install-lib": "npm install file:libs/dynamic-table-0.0.1.tgz file:libs/core-0.0.1.tgz file:libs/form-render-0.0.1.tgz file:libs/table-render-0.0.1.tgz file:libs/editor-0.0.1.tgz file:libs/generator-0.0.1.tgz"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,8 @@
     "dynamic-table": "file:libs/dynamic-table-0.0.1.tgz",
     "editor": "file:libs/editor-0.0.1.tgz",
     "form-render": "file:libs/form-render-0.0.1.tgz",
+    "generator": "file:libs/generator-0.0.1.tgz",
+    "js-base64": "^3.7.2",
     "ng-zorro-antd": "^12.0.2",
     "rxjs": "~6.6.0",
     "table-render": "file:libs/table-render-0.0.1.tgz",
