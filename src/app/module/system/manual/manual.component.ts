@@ -41,6 +41,7 @@ export class ManualComponent implements OnInit {
       title: '操作',
       key: 'operator',
       type: 'string',
+      width: '160px',
       component: TableColumnEnum.OPERATOR,
       operators: [
         {
