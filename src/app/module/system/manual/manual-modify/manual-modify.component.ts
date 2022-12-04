@@ -20,13 +20,15 @@ export class ManualModifyComponent implements OnInit {
       type: 'string',
       component: FormFieldEnum.INPUT,
       label: '手册名称',
-      key: 'manualName'
+      key: 'manualName',
+      labelSpan: 3
     },
     {
       type: 'string',
       component: FormFieldEnum.INPUT,
       label: '描述',
-      key: 'description'
+      key: 'description',
+      labelSpan: 3
     }
   ];
 

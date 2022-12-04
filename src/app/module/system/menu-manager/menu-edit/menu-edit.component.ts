@@ -48,25 +48,29 @@ export class MenuEditComponent implements OnInit {
       key: 'menuName',
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '菜单名称'
+      label: '菜单名称',
+      labelSpan: 4
     },
     {
       key: 'code',
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '菜单标识'
+      label: '菜单标识',
+      labelSpan: 4
     },
     {
       key: 'url',
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '菜单url'
+      label: '菜单url',
+      labelSpan: 4
     },
     {
       key: 'regexpUrl',
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '菜单匹配规则'
+      label: '菜单匹配规则',
+      labelSpan: 4
     },
     {
       key: 'type',
@@ -79,13 +83,15 @@ export class MenuEditComponent implements OnInit {
           value: 'url'
         }
       ],
-      nzSpan: 24
+      nzSpan: 24,
+      labelSpan: 4
     } as SelectField,
     {
       key: 'position',
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '菜单顺序'
+      label: '菜单顺序',
+      labelSpan: 4
     },
     {
       key: 'parentMenuId',
@@ -93,7 +99,8 @@ export class MenuEditComponent implements OnInit {
       component: FormFieldEnum.TREE_SELECT,
       label: '上级菜单',
       nzSpan: 24,
-      treeSelectNodes: []
+      treeSelectNodes: [],
+      labelSpan: 4
     } as TreeSelectFormField
 
   ]
