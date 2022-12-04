@@ -1,0 +1,80 @@
+.blog-hero {
+  height: 350px;
+  width: 100%;
+  background: #eee;
+  position: relative;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .mask {
+    background: url("../../../../assets/image/hero.jpg") center/cover no-repeat;
+    background-position-y: top;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &:after {
+      display: block;
+      content: '';
+      background: rgb(153, 153, 153);
+      opacity: .2;
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  .logo {
+    position: relative;
+    z-index: 2;
+    height: 180px;
+    width: 180px;
+    margin: 1rem 0;
+    animation-name: show;
+    animation-duration: 1s;
+    user-select: none;
+  }
+
+  .title {
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+    font-size: 2.25rem;
+    animation-name: show;
+    animation-duration: 1s;
+  }
+
+  .description {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-size: 1.25rem;
+    animation-name: show;
+    animation-duration: 1s;
+  }
+}
+
+.article-page-box {
+  margin: auto;
+  max-width: 1280px;
+  padding-bottom: 1rem;
+}
+
+@keyframes show {
+  from {
+    transform: translateY(-50px);
+    opacity: 0.25;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

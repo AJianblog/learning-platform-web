@@ -1,0 +1,19 @@
+<div class="blog-hero">
+  <div class="mask"></div>
+  <img class="logo" src="assets/image/logo.svg" alt="logo">
+  <h1 class="title">每日一学</h1>
+  <p class="description">天赋决定下限，努力决上限</p>
+</div>
+<div class="article-page-box" *ngIf="pageResult">
+  <div *ngFor="let article of pageResult.records">
+    <app-article-item [article]="article"></app-article-item>
+  </div>
+  <div class="flex justify-end">
+    <nz-pagination
+      [nzPageIndex]="pageResult.current"
+      [nzPageSize]="pageResult.size"
+      [nzTotal]="pageResult.total"
+      (nzPageIndexChange)="pageIndexChange($event)"
+    ></nz-pagination>
+  </div>
+</div>
