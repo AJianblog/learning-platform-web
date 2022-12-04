@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 16px 0;
+  border-top: 1px solid #eeeeee;
+  cursor: pointer;
+
+  span {
+    color: #673ab7;
+  }
+}
