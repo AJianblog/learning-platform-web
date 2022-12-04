@@ -8,6 +8,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSelectModule } from "@angular/material/select";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 const MAT_MODULE = [
   MatFormFieldModule,
@@ -18,7 +19,8 @@ const MAT_MODULE = [
   MatToolbarModule,
   MatIconModule,
   MatSidenavModule,
-  MatSelectModule
+  MatSelectModule,
+  MatProgressSpinnerModule
 
 ]
 
