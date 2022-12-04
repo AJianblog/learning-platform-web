@@ -8,6 +8,7 @@ import { ArticleTagComponent } from "./article-tag/article-tag.component";
 import { ArticleComponent } from "./article/article.component";
 import { AddArticleComponent } from "./article/add-article/add-article.component";
 import { EditArticleComponent } from "./article/edit-article/edit-article.component";
+import { ManualComponent } from "./manual/manual.component";
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'articleTag', component: ArticleTagComponent },
       { path: 'article', component: ArticleComponent },
       { path: 'addArticle', component: AddArticleComponent },
-      { path: 'editArticle/:id', component: EditArticleComponent }
+      { path: 'editArticle/:id', component: EditArticleComponent },
+      { path: 'manualManager', component: ManualComponent }
     ]
   }
 ];

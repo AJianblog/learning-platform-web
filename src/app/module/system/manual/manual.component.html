@@ -1,0 +1,14 @@
+<div class="full-container">
+  <div class="card">
+    <app-table-tools
+      title="查询结果"
+      [tools]="tools"
+      (toolClick)="toolClick($event)"
+    ></app-table-tools>
+    <h-table
+      [columns]="columns"
+      [config]="tableConfig"
+      (cellClick)="cellClick($event)"
+    ></h-table>
+  </div>
+</div>
