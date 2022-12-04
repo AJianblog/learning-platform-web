@@ -1,0 +1,14 @@
+<nz-card *ngIf="article" nzHoverable class="article-card">
+  <a class="article-title" [routerLink]="['/article', article.articleId]">{{ article.articleTitle }}</a>
+  <div class="article-value">{{ article.articleValue | articleShow: 400}}</div>
+  <div class="article-info">
+    <div>
+      <span nz-icon nzType="field-time" nzTheme="outline"></span>
+      <span nz-tooltip nzTooltipTitle="创建时间">{{ article.createTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>
+    </div>
+    <div>
+      <span nz-icon nzType="field-time" nzTheme="outline"></span>
+      <span nz-tooltip nzTooltipTitle="最后更新时间">{{ article.lastUpdateTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>
+    </div>
+  </div>
+</nz-card>
