@@ -22,13 +22,13 @@ export class ArticleTagInfoComponent implements OnInit {
     {
       type: 'string',
       component: FormFieldEnum.INPUT,
-      label: '文章标签名称',
+      label: '标签名称',
       key: 'articleTagName'
     },
     {
       type: 'string',
       component: FormFieldEnum.SELECT,
-      label: '文章标签分类',
+      label: '标签分类',
       key: 'articleTypeId',
       options: []
     } as SelectField

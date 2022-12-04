@@ -28,14 +28,14 @@ export class ArticleTagComponent implements OnInit {
 
   columns: BaseColumn[] = [
     {
-      title: '文章标签名称',
+      title: '标签名称',
       key: 'articleTagName',
       type: 'string',
       component: TableColumnEnum.TEXT
     },
     {
       key: 'articleTypeId',
-      title: '文章分类名称',
+      title: '分类名称',
       type: 'string',
       component: TableColumnEnum.TEXT,
       formatter: (articleTypeId: string) => {
