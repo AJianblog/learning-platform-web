@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { Article } from "../../../../@core/article/entity/Article";
 import { NzDrawerService } from "ng-zorro-antd/drawer";
 import { ArticleInfoComponent } from "../article-info/article-info.component";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-article',
@@ -37,7 +38,10 @@ export class AddArticleComponent implements OnInit {
     indentUnit: 4
   }
 
-  constructor(private fb: FormBuilder, private drawerService: NzDrawerService) {
+  constructor(private fb: FormBuilder,
+              private drawerService: NzDrawerService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.formGroup = fb.group({
       articleValue: [''],
       articleTitle: ['']
@@ -62,7 +66,12 @@ export class AddArticleComponent implements OnInit {
       }
     });
     drawerRef.afterClose.subscribe((data: Article) => {
-      this.article = data;
+      if (data) {
+        this.article = data;
+        this.router.navigate(['/system/article'], {
+          relativeTo: this.route
+        })
+      }
     })
   }
 
