@@ -47,6 +47,7 @@ export class ArticleTagComponent implements OnInit {
       type: 'object',
       key: 'operator',
       title: '操作',
+      width: '160px',
       component: TableColumnEnum.OPERATOR,
       operators: [
         {

@@ -72,6 +72,7 @@ export class ArticleComponent implements OnInit {
       key: 'operator',
       type: 'string',
       component: TableColumnEnum.OPERATOR,
+      width: '160px',
       operators: [
         {
           key: 'edit',
