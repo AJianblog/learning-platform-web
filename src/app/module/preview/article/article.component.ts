@@ -34,6 +34,8 @@ export class ArticleComponent implements OnInit {
   }
 
   setTocMenu(tocMenu: any[]) {
-    this.tocMenu = tocMenu || [];
+    setTimeout(() => {
+      this.tocMenu = tocMenu || [];
+    }, 0)
   }
 }
