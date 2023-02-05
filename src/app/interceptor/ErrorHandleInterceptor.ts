@@ -42,7 +42,7 @@ export class ErrorHandleInterceptor implements HttpInterceptor {
         error => {
           if (this.snackBar) {
             let message = error.error.message
-            if (error.status === HttpStatusCode.GatewayTimeout) {
+            if (error.status !== HttpStatusCode.Ok ) {
               message = error.statusText
             }
             this.snackBar.open(message, "关闭", {

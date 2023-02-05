@@ -21,6 +21,8 @@ import { EditorModule } from "editor";
 import { ArticleInfoComponent } from "./article/article-info/article-info.component";
 import { AddArticleComponent } from './article/add-article/add-article.component';
 import { EditArticleComponent } from './article/edit-article/edit-article.component';
+import { ManualComponent } from './manual/manual.component';
+import { ManualModifyComponent } from './manual/manual-modify/manual-modify.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { EditArticleComponent } from './article/edit-article/edit-article.compon
     ArticleTagInfoComponent,
     ArticleInfoComponent,
     AddArticleComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    ManualComponent,
+    ManualModifyComponent
   ],
   imports: [
     CommonModule,

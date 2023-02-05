@@ -92,9 +92,7 @@ export class ArticleInfoComponent implements OnInit {
   }
 
   save() {
-    debugger
     this.article = { ...this.article, ...this.formGroup?.value }
-    this.article!.createTime = '';
     if (this.article) {
       // 存在文章id，判断为更新文章内容
       if (this.article.articleId) {

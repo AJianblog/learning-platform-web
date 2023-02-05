@@ -17,7 +17,7 @@ export class ArticleTypeInfoComponent implements OnInit {
       type: 'string',
       component: 'InputComponent',
       key: 'articleTypeName',
-      label: '文章分类'
+      label: '分类名称'
     }
   ]
 

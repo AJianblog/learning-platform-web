@@ -36,7 +36,7 @@ export class ArticleTypeComponent implements OnInit {
   columns: BaseColumn[] = [
     {
       key: 'articleTypeName',
-      title: '文章分类名称',
+      title: '分类名称',
       type: 'string',
       component: TableColumnEnum.TEXT
     },
@@ -44,6 +44,7 @@ export class ArticleTypeComponent implements OnInit {
       type: 'object',
       key: 'operator',
       title: '操作',
+      width: '160px',
       component: TableColumnEnum.OPERATOR,
       operators: [
         {
