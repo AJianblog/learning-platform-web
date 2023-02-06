@@ -34,6 +34,8 @@ import { EditorModule } from "editor";
   providers: [
     httpInterceptorProviders
   ],
+  exports: [
+  ],
   bootstrap: [
     AppComponent
   ]
