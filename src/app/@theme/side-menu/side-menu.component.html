@@ -3,6 +3,6 @@
     <li *ngIf="menu.children && menu.children.length" nz-submenu [nzTitle]="menu.menuName">
       <app-side-menu [menus]="menu.children"></app-side-menu>
     </li>
-    <li *ngIf="!menu.children || !menu.children.length" nz-menu-item [routerLink]="menu.url">{{ menu.menuName }}</li>
+    <li *ngIf="!menu.children || !menu.children.length" nz-menu-item [routerLink]="[menu.url]">{{ menu.menuName }}</li>
   </ng-container>
 </ul>
