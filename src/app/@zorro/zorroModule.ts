@@ -12,6 +12,9 @@ import { NzModalModule } from "ng-zorro-antd/modal";
 import { NzAvatarModule } from "ng-zorro-antd/avatar";
 import { NzFormModule } from "ng-zorro-antd/form";
 import { NzInputModule } from "ng-zorro-antd/input";
+import { NzToolTipModule } from "ng-zorro-antd/tooltip";
+import { NzCardModule } from "ng-zorro-antd/card";
+import { NzPaginationModule } from "ng-zorro-antd/pagination";
 
 const zorroModule = [
   NzButtonModule,
@@ -26,7 +29,10 @@ const zorroModule = [
   NzModalModule,
   NzAvatarModule,
   NzFormModule,
-  NzInputModule
+  NzInputModule,
+  NzToolTipModule,
+  NzCardModule,
+  NzPaginationModule
 ]
 
 @NgModule({
