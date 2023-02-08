@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~codemirror/lib/codemirror";
+@import "~codemirror/theme/material";
+@import "~ng-zorro-antd/style/index.min.css";
+@import "~ng-zorro-antd/descriptions/style/index.min.css";
+@import "~ng-zorro-antd/drawer/style/index.min.css";
+@import "~ng-zorro-antd/dropdown/style/index.min.css";
+@import "~ng-zorro-antd/empty/style/index.min.css";
+@import "~ng-zorro-antd/form/style/index.min.css";
+@import "~ng-zorro-antd/input/style/index.min.css";
+@import "~ng-zorro-antd/menu/style/index.min.css";
+@import "~ng-zorro-antd/message/style/index.min.css";
+@import "~ng-zorro-antd/modal/style/index.min.css";
+@import "~ng-zorro-antd/select/style/index.min.css";
+@import "~ng-zorro-antd/tree/style/index.min.css";
+@import "~ng-zorro-antd/tree-select/style/index.min.css";
+@import "~ng-zorro-antd/tree-view/style/index.min.css";
+@import "~ng-zorro-antd/table/style/index.min.css";
+@import "~ng-zorro-antd/avatar/style/index.min.css";
+@import "~ng-zorro-antd/card/style/index.min.css";
+@import "~ng-zorro-antd/grid/style/index.min.css";
 
 html, body {
   height: 100%;
@@ -25,4 +45,16 @@ body {
   border-radius: 4px;
   border: 1px solid #ebeef5;
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }

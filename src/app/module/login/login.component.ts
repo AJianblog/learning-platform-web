@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../@core/system/service/user.service";
-import { setToken, setUserId, setUserInfo } from "../../utils/localStorageMessage";
+import { setToken } from "../../utils/localStorageMessage";
 import { Router } from "@angular/router";
 
 @Component({
@@ -38,8 +38,6 @@ export class LoginComponent implements OnInit {
     this.loginButtonLoading = true
     this.userService.login(this.loginFormGroup.value).subscribe(data => {
       setToken(data.token);
-      setUserId(data.userId);
-      setUserInfo(JSON.stringify(data))
       this.router.navigate(['/'])
       this.loginButtonLoading = false;
     }, (err) => {

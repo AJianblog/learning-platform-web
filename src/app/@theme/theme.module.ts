@@ -8,13 +8,17 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { TableToolsComponent } from './table-tools/table-tools.component';
 import { CoreModule } from "core";
+import { ArticleShowPipe } from "./pipe/article-show.pipe";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SideMenuComponent,
     AdminLayoutComponent,
-    TableToolsComponent
+    TableToolsComponent,
+    ArticleShowPipe,
+    FooterComponent
   ],
   imports: [
     MaterialModule,
@@ -27,7 +31,9 @@ import { CoreModule } from "core";
     HeaderComponent,
     SideMenuComponent,
     AdminLayoutComponent,
-    TableToolsComponent
+    TableToolsComponent,
+    ArticleShowPipe,
+    FooterComponent
   ]
 })
 export class ThemeModule {

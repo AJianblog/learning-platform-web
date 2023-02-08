@@ -1,9 +1,8 @@
 .article-preview-container {
   max-width: 1280px;
-  flex: 1;
   display: flex;
   position: relative;
-  margin-top: 16px;
+  margin: 16px auto 0 auto;
 
   .left-container {
     max-width: 970px;
@@ -67,9 +66,8 @@
 
 .article-preview-bg {
   background-color: #f4f5f5;
+  padding: 1rem;
   min-height: calc(100% - 56px);
-  display: flex;
-  justify-content: center;
 }
 
 .article-title-box {
@@ -95,4 +93,16 @@
       }
     }
   }
+}
+
+@media (width <= 1280px) {
+
+  .article-preview-container .left-container {
+    max-width: 100%;
+  }
+
+  .right-container {
+    display: none;
+  }
+
 }

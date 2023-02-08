@@ -9,6 +9,7 @@ import { ArticleComponent } from "./article/article.component";
 import { AddArticleComponent } from "./article/add-article/add-article.component";
 import { EditArticleComponent } from "./article/edit-article/edit-article.component";
 import { ManualComponent } from "./manual/manual.component";
+import { ComponentSchemaComponent } from "./component-manager/component-schema/component-schema.component";
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: 'article', component: ArticleComponent },
       { path: 'addArticle', component: AddArticleComponent },
       { path: 'editArticle/:id', component: EditArticleComponent },
-      { path: 'manualManager', component: ManualComponent }
+      { path: 'manualManager', component: ManualComponent },
+      { path: 'componentSchema', component: ComponentSchemaComponent }
     ]
   }
 ];
