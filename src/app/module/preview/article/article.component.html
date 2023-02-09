@@ -2,15 +2,15 @@
   <div *ngIf="article" class="article-preview-container">
     <div class="left-container" [class]="{ 'no-toc-menu': !tocMenu.length }">
       <div class="article-title-box">
-        <h1 class="article-title">{{ article.articleTitle }}</h1>
+        <h2 class="article-title">{{ article.articleTitle }}</h2>
         <div class="article-info">
+<!--          <div>-->
+<!--            <span nz-icon nzType="field-time" nzTheme="outline"></span>-->
+<!--            <span nz-tooltip nzTooltipTitle="创建时间">更新时间: {{ article.createTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>-->
+<!--          </div>-->
           <div>
-            <span nz-icon nzType="field-time" nzTheme="outline"></span>
-            <span nz-tooltip nzTooltipTitle="创建时间">{{ article.createTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>
-          </div>
-          <div>
-            <span nz-icon nzType="field-time" nzTheme="outline"></span>
-            <span nz-tooltip nzTooltipTitle="最后更新时间">{{ article.lastUpdateTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>
+<!--            <span nz-icon nzType="field-time" nzTheme="outline"></span>-->
+            <span nz-tooltip nzTooltipTitle="最后更新时间">最后更新时间: {{ article.lastUpdateTime | date : 'YYYY-MM-dd HH:mm:ss' }}</span>
           </div>
         </div>
       </div>

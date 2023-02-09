@@ -72,14 +72,11 @@
 
 .article-title-box {
   background-color: #ffffff;
-  padding: 1rem 2rem;
+  padding: .5rem 1rem;
   border-bottom: 1px solid #eaecef;
 
   .article-title {
-    //margin-bottom: 0;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
+    margin-bottom: 0.5rem;
   }
 
   .article-info {
@@ -105,4 +102,28 @@
     display: none;
   }
 
+  .article-preview-bg {
+    padding: 0;
+  }
+
+  .article-info {
+    flex-direction: column;
+  }
+
+  .article-preview {
+    ::ng-deep {
+      .markdown-body {
+        padding: .75rem;
+
+        img {
+          width: 100%;
+        }
+
+        pre {
+          margin-left: -0.5rem;
+          margin-right: -0.5rem;
+        }
+      }
+    }
+  }
 }
