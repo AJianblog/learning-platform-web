@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Menu } from "../../@core/system/entity/menu";
 import { MenuService } from "../../@core/system/service/menu.service";
+import { MatDrawerMode } from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-admin-layout',
@@ -11,12 +12,24 @@ export class AdminLayoutComponent implements OnInit {
 
   menus: Menu[] = [];
 
+  /**
+   * 抽屉的模式
+   */
+  mode: MatDrawerMode = 'side';
+
+  /**
+   * drawer首次出现的状态， true: 打开, false: 关闭
+   */
+  opened: boolean = true;
+
 
   constructor(private menuService: MenuService) {
+    this.opened = window.innerWidth > 1280
   }
 
   ngOnInit(): void {
     this.findUserMenu();
+    this.setMode();
   }
 
   /**
@@ -26,6 +39,22 @@ export class AdminLayoutComponent implements OnInit {
     this.menuService.findUserMenu().subscribe(data => {
       this.menus = data;
     })
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.setMode();
+  }
+
+  /**
+   * 小屏幕改变抽屉的模式
+   */
+  setMode() {
+    if (window.innerWidth < 1280) {
+      this.mode = 'over';
+    } else {
+      this.mode = 'side';
+    }
   }
 
 }
