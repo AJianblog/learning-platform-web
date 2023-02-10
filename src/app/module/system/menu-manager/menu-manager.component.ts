@@ -7,6 +7,7 @@ import { NzDrawerService } from "ng-zorro-antd/drawer";
 import { MenuEditComponent } from "./menu-edit/menu-edit.component";
 import { NzModalService } from "ng-zorro-antd/modal";
 import { MessageService } from "../../../service/message.service";
+import { getFitWidth } from "../../../utils/drawerWidth";
 
 @Component({
   selector: 'app-menu-manager',
@@ -94,7 +95,7 @@ export class MenuManagerComponent implements OnInit {
     const drawerRef = this.drawerService.create<MenuEditComponent, undefined, { type: string }>({
       nzTitle: title,
       nzMaskClosable: false,
-      nzWidth: '45%',
+      nzWidth: getFitWidth(),
       nzContent: MenuEditComponent,
       nzContentParams: {
         nodes: this.nodes,
@@ -125,7 +126,7 @@ export class MenuManagerComponent implements OnInit {
       nzClosable: false,
       nzOnOk: () => {
         return new Promise(resolve => {
-          this.menuService.deleteMenuById(this.menuInfo?.menuId).subscribe(res => {
+          this.menuService.deleteMenuById(this.menuInfo?.menuId).subscribe(() => {
             this.findUserMenu();
             this.menuInfo = undefined;
             resolve()

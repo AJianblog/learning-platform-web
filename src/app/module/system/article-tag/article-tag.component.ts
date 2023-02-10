@@ -12,6 +12,8 @@ import { TableColumnEnum, TableConfig } from "table-render";
 import { OperatorColumn } from "table-render/lib/entity/OperatorColumn";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Button } from "core/lib/entity/Button";
+import { TABLE_SCROLL_X } from "../../../utils/constant";
+import { getFitWidth } from "../../../utils/drawerWidth";
 
 @Component({
   selector: 'app-tag-type',
@@ -67,7 +69,10 @@ export class ArticleTagComponent implements OnInit {
     total: 0,
     pageIndex: 1,
     pageSize: 20,
-    showSizeChanger: true
+    showSizeChanger: true,
+    scroll: {
+      x: TABLE_SCROLL_X
+    }
   }
 
   articleType: ArticleType[] = []
@@ -134,7 +139,7 @@ export class ArticleTagComponent implements OnInit {
     }, ArticleTag>({
       nzTitle: title,
       nzContent: ArticleTagInfoComponent,
-      nzWidth: '45%',
+      nzWidth: getFitWidth(),
       nzContentParams: {
         articleType: this.articleType,
         articleTag: articleTag

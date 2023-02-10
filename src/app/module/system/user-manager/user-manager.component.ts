@@ -9,6 +9,8 @@ import { TableColumnEnum, TableConfig } from "table-render";
 import { OperatorColumn } from "table-render/lib/entity/OperatorColumn";
 import { Button } from "core/lib/entity/Button";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { getFitWidth } from "../../../utils/drawerWidth";
+import { TABLE_SCROLL_X } from "../../../utils/constant";
 
 @Component({
   selector: 'app-user-manager',
@@ -85,7 +87,10 @@ export class UserManagerComponent implements OnInit {
     total: 0,
     pageSize: 20,
     pageIndex: 10,
-    showSizeChanger: true
+    showSizeChanger: true,
+    scroll: {
+      x: TABLE_SCROLL_X
+    }
   }
 
   constructor(private userService: UserService,
@@ -129,7 +134,7 @@ export class UserManagerComponent implements OnInit {
     this.drawerService.create<UserEditComponent, {}, {}>({
       nzTitle: '创建用户',
       nzMaskClosable: false,
-      nzWidth: '45%',
+      nzWidth: getFitWidth(),
       nzContent: UserEditComponent,
       nzContentParams: {}
     })

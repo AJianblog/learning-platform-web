@@ -9,6 +9,7 @@ import { Article } from "../../../@core/article/entity/Article";
 import * as dayjs from "dayjs";
 import { OperatorColumn } from "table-render/lib/entity/OperatorColumn";
 import { NzModalService } from "ng-zorro-antd/modal";
+import { TABLE_SCROLL_X } from "../../../utils/constant";
 
 @Component({
   selector: 'app-article-manager',
@@ -91,7 +92,10 @@ export class ArticleComponent implements OnInit {
     total: 0,
     pageIndex: 1,
     pageSize: 20,
-    showSizeChanger: true
+    showSizeChanger: true,
+    scroll: {
+      x: TABLE_SCROLL_X
+    }
   }
 
 
