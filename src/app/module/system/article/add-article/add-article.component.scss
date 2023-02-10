@@ -19,7 +19,35 @@
     //margin-left: 29px !important;
   }
 
-  .article-title .ant-form-item-control-input-content{
+  .article-title .ant-form-item-control-input-content {
     display: flex;
   }
+}
+
+
+@media (width <= 1280px) {
+
+  .article-box {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  ::ng-deep {
+    .ant-form-item {
+      padding-left: .5rem;
+      padding-right: .5rem;
+    }
+
+    .article-box .h-editor {
+      form {
+        flex-basis: 100% !important;
+        max-width: 100% !important;
+      }
+
+      h-preview {
+        display: none;
+      }
+    }
+  }
+
 }
