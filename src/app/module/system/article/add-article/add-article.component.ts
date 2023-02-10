@@ -4,6 +4,7 @@ import { Article } from "../../../../@core/article/entity/Article";
 import { NzDrawerService } from "ng-zorro-antd/drawer";
 import { ArticleInfoComponent } from "../article-info/article-info.component";
 import { ActivatedRoute, Router } from "@angular/router";
+import { getFitWidth } from "../../../../utils/drawerWidth";
 
 @Component({
   selector: 'app-add-article',
@@ -60,7 +61,7 @@ export class AddArticleComponent implements OnInit {
       nzTitle: '文章信息',
       nzContent: ArticleInfoComponent,
       nzMaskClosable: false,
-      nzWidth: '45%',
+      nzWidth: getFitWidth(),
       nzContentParams: {
         article: this.article
       }

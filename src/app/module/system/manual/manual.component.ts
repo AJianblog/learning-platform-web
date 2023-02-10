@@ -9,6 +9,7 @@ import { ManualService } from "../../../@core/article/service/ManualService";
 import { Manual } from "../../../@core/article/entity/Manual";
 import { PageResult } from "../../../@core/common/entity/PageResult";
 import { NzModalService } from "ng-zorro-antd/modal";
+import { getFitWidth } from "../../../utils/drawerWidth";
 
 @Component({
   selector: 'app-manual',
@@ -84,7 +85,7 @@ export class ManualComponent implements OnInit {
       nzTitle: '新增',
       nzContent: ManualModifyComponent,
       nzMaskClosable: false,
-      nzWidth: '45%'
+      nzWidth: getFitWidth()
     });
     drawerRef.afterClose.subscribe((data) => {
       if (data) {
@@ -125,7 +126,7 @@ export class ManualComponent implements OnInit {
       nzTitle: '编辑',
       nzContent: ManualModifyComponent,
       nzMaskClosable: false,
-      nzWidth: '45%',
+      nzWidth: getFitWidth(),
       nzContentParams: {
         manual: manual
       }

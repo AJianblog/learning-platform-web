@@ -10,6 +10,8 @@ import { BaseColumn } from "table-render/lib/entity/BaseColumn";
 import { OperatorColumn } from "table-render/lib/entity/OperatorColumn";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Button } from "core/lib/entity/Button";
+import { TABLE_SCROLL_X } from "../../../utils/constant";
+import { getFitWidth } from "../../../utils/drawerWidth";
 
 @Component({
   selector: 'app-article-type-manager',
@@ -30,7 +32,10 @@ export class ArticleTypeComponent implements OnInit {
     pageIndex: 1,
     total: 0,
     pageSize: 20,
-    showSizeChanger: true
+    showSizeChanger: true,
+    scroll: {
+      x: TABLE_SCROLL_X
+    }
   }
 
   columns: BaseColumn[] = [
@@ -99,7 +104,7 @@ export class ArticleTypeComponent implements OnInit {
     }, ArticleType>({
       nzTitle: title,
       nzMaskClosable: false,
-      nzWidth: '45%',
+      nzWidth: getFitWidth(),
       nzContent: ArticleTypeInfoComponent,
       nzContentParams: {
         articleType: articleType
