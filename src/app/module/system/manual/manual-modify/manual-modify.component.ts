@@ -37,7 +37,8 @@ export class ManualModifyComponent implements OnInit {
   @Input()
   manual: Manual | undefined;
 
-  constructor(private manualService: ManualService, private drawerRef: NzDrawerRef) { }
+  constructor(private manualService: ManualService, private drawerRef: NzDrawerRef) {
+  }
 
   ngOnInit(): void {
   }
@@ -55,16 +56,22 @@ export class ManualModifyComponent implements OnInit {
       this.manualService.updateManual({
         ...this.manual,
         ...this.formGroup?.value
-      }).subscribe((manual: Manual) => {
-        this.drawerRef.close(manual);
-      }, () => {
-        this.saveLoading = false;
+      }).subscribe({
+        next: (manual: Manual) => {
+          this.drawerRef.close(manual);
+        },
+        error: () => {
+          this.saveLoading = false;
+        }
       })
     } else {
-      this.manualService.addManual(this.formGroup?.value).subscribe((manual: Manual) => {
-        this.drawerRef.close(manual);
-      }, () => {
-        this.saveLoading = false;
+      this.manualService.addManual(this.formGroup?.value).subscribe({
+        next: (manual: Manual) => {
+          this.drawerRef.close(manual);
+        },
+        error: () => {
+          this.saveLoading = false;
+        }
       })
     }
   }

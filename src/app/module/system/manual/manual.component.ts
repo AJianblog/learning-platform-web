@@ -10,6 +10,9 @@ import { Manual } from "../../../@core/article/entity/Manual";
 import { PageResult } from "../../../@core/common/entity/PageResult";
 import { NzModalService } from "ng-zorro-antd/modal";
 import { getFitWidth } from "../../../utils/drawerWidth";
+import dayjs from "dayjs";
+import { ExtendTableColumnEnum } from "../../../enum/extendTableColumnEnum";
+import { EventCellColumn } from "../../../@core/table-column-components/entity/eventCellColumn";
 
 @Component({
   selector: 'app-manual',
@@ -30,13 +33,34 @@ export class ManualComponent implements OnInit {
       title: '手册名称',
       key: 'manualName',
       type: 'string',
-      component: TableColumnEnum.TEXT
-    },
+      component: ExtendTableColumnEnum.EVENT_CELL,
+      clickEvent: (data: any) => {
+        console.log(data)
+      }
+    } as EventCellColumn,
     {
       title: '描述',
       key: 'description',
       type: 'string',
       component: TableColumnEnum.TEXT
+    },
+    {
+      title: '创建时间',
+      key: 'createTime',
+      type: 'string',
+      component: TableColumnEnum.TEXT,
+      formatter: (data: string) => {
+        return dayjs(data).format('YYYY-MM:DD HH:mm:ss')
+      }
+    },
+    {
+      title: '更新时间',
+      key: 'updateTime',
+      type: 'string',
+      component: TableColumnEnum.TEXT,
+      formatter: (data: string) => {
+        return dayjs(data).format('YYYY-MM:DD HH:mm:ss')
+      }
     },
     {
       title: '操作',
@@ -110,11 +134,14 @@ export class ManualComponent implements OnInit {
       nzContent: `是否要删除${manual.manualName}`,
       nzOnOk: () => {
         return new Promise((resolve, reject) => {
-          this.manualService.deleteManualById(manual.manualId).subscribe(() => {
-            this.page();
-            resolve()
-          }, () => {
-            reject()
+          this.manualService.deleteManualById(manual.manualId).subscribe({
+            next: () => {
+              this.page();
+              resolve()
+            },
+            error: () => {
+              reject()
+            }
           })
         })
       }

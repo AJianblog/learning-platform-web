@@ -14,6 +14,8 @@ import { ArticleService } from "./article/service/article.service";
 import { ArticleImplService } from "./article/service/impl/article-impl.service";
 import { ManualService } from "./article/service/ManualService";
 import { ManualImplService } from "./article/service/impl/manual-impl.service";
+import { DynamicComponentService } from "core";
+import { EventCellComponent } from './table-column-components/event-cell/event-cell.component';
 
 
 const SERVICE = [
@@ -25,17 +27,26 @@ const SERVICE = [
   { provide: ManualService, useClass: ManualImplService }
 ]
 
+const DYNAMIC_COMPONENT = [
+  { name: 'EventCellComponent', component: EventCellComponent }
+]
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    EventCellComponent
+  ],
   imports: [],
-  exports: []
+  exports: [
+    EventCellComponent
+  ]
 })
 export class CoreModule {
 
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private dynamicComponentService: DynamicComponentService) {
     if (parentModule) {
       throw new Error('CoreModule has already been loaded. Import Core modules in the AppModule only.');
     }
+    dynamicComponentService.registerComponent(DYNAMIC_COMPONENT)
     LoadSvgResource(matIconRegistry, domSanitizer);
   }
 
