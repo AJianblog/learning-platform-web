@@ -11,8 +11,6 @@ import { PageResult } from "../../../@core/common/entity/PageResult";
 import { NzModalService } from "ng-zorro-antd/modal";
 import { getFitWidth } from "../../../utils/drawerWidth";
 import dayjs from "dayjs";
-import { ExtendTableColumnEnum } from "../../../enum/extendTableColumnEnum";
-import { EventCellColumn } from "../../../@core/table-column-components/entity/eventCellColumn";
 
 @Component({
   selector: 'app-manual',
@@ -33,11 +31,9 @@ export class ManualComponent implements OnInit {
       title: '手册名称',
       key: 'manualName',
       type: 'string',
-      component: ExtendTableColumnEnum.EVENT_CELL,
-      clickEvent: (data: any) => {
-        console.log(data)
-      }
-    } as EventCellColumn,
+      component: TableColumnEnum.TEXT,
+      class: 'manual-name'
+    },
     {
       title: '描述',
       key: 'description',
@@ -125,6 +121,8 @@ export class ManualComponent implements OnInit {
       } else if (data.operator.key === 'delete') {
         this.deleteManual(data.rowData)
       }
+    } else if (data.config.key === 'manualName') {
+      console.log(data)
     }
   }
 

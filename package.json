@@ -30,7 +30,7 @@
     "js-base64": "^3.7.2",
     "ng-zorro-antd": "^13.4.0",
     "rxjs": "~7.5.0",
-    "table-render": "file:libs/table-render-0.0.1.tgz",
+    "table-render": "file:libs/table-render-0.0.2.tgz",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
