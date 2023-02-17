@@ -10,6 +10,7 @@ import { ZorroModule } from "../../@zorro/zorroModule";
 import { ArticleComponent } from './article/article.component';
 import { EditorModule } from "editor";
 import { TocMenuComponent } from './article/toc-menu/toc-menu.component';
+import { ImageShowDialogComponent } from './article/image-show-dialog/image-show-dialog.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TocMenuComponent } from './article/toc-menu/toc-menu.component';
     HomeComponent,
     ArticleItemComponent,
     ArticleComponent,
-    TocMenuComponent
+    TocMenuComponent,
+    ImageShowDialogComponent
   ],
   imports: [
     CommonModule,

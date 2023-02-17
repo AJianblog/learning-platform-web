@@ -92,6 +92,12 @@
   }
 }
 
+:host .article-preview ::ng-deep {
+  img {
+    cursor: zoom-in;
+  }
+}
+
 @media (width <= 1280px) {
 
   .article-preview-container .left-container {
@@ -110,23 +116,21 @@
     flex-direction: column;
   }
 
-  .article-preview {
-    ::ng-deep {
-      .markdown-body {
-        padding: .75rem;
+  :host .article-preview ::ng-deep {
+    .markdown-body {
+      padding: .75rem;
 
-        img {
-          width: 100%;
-        }
+      img {
+        width: 100%;
+      }
 
-        pre {
-          margin-left: -0.5rem;
-          margin-right: -0.5rem;
-        }
+      pre {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+      }
 
-        p {
-          margin: 0;
-        }
+      p {
+        margin: 0;
       }
     }
   }

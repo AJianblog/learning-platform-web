@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Article } from "../../../@core/article/entity/Article";
 import { ArticleService } from "../../../@core/article/service/article.service";
-import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+import { NzModalService } from "ng-zorro-antd/modal";
+import { ImageShowDialogComponent } from "./image-show-dialog/image-show-dialog.component";
+import { PreviewComponent } from "editor";
 
 @Component({
   selector: 'app-article',
@@ -14,9 +17,19 @@ export class ArticleComponent implements OnInit {
 
   tocMenu: any[] = [];
 
+  previewComponent: any;
+
+  @ViewChild(PreviewComponent)
+  set preview(v: PreviewComponent) {
+    setTimeout(() => {
+      this.previewComponent = v;
+      console.log(this.previewComponent)
+    }, 0);
+  }
+
   constructor(private articleService: ArticleService,
               private route: ActivatedRoute,
-              private router: Router) {
+              protected modalService: NzModalService) {
   }
 
   ngOnInit(): void {
@@ -37,5 +50,29 @@ export class ArticleComponent implements OnInit {
     setTimeout(() => {
       this.tocMenu = tocMenu || [];
     }, 0)
+  }
+
+  /**
+   * 展示图片
+   * @param imageUrl 图片地址
+   */
+  showImageDialog(imageUrl: string) {
+    this.modalService.create({
+      nzContent: ImageShowDialogComponent,
+      nzTitle: '',
+      nzFooter: null,
+      nzCloseIcon: '',
+      nzCentered: true,
+      nzWidth: 'auto',
+      nzComponentParams: {
+        imageUrl: imageUrl
+      }
+    })
+  }
+
+  clickHandle(data: any) {
+    if (data.target && data.target.nodeName.toLowerCase() === 'img') {
+      this.showImageDialog(data.target.src);
+    }
   }
 }
