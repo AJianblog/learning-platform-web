@@ -10,6 +10,7 @@ import { TableToolsComponent } from './table-tools/table-tools.component';
 import { CoreModule } from "core";
 import { ArticleShowPipe } from "./pipe/article-show.pipe";
 import { FooterComponent } from './footer/footer.component';
+import { NotFindPageComponent } from './not-find-page/not-find-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './footer/footer.component';
     AdminLayoutComponent,
     TableToolsComponent,
     ArticleShowPipe,
-    FooterComponent
+    FooterComponent,
+    NotFindPageComponent
   ],
   imports: [
     MaterialModule,
