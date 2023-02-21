@@ -5,6 +5,7 @@ import { ActivatedRoute, ParamMap } from "@angular/router";
 import { NzModalService } from "ng-zorro-antd/modal";
 import { ImageShowDialogComponent } from "./image-show-dialog/image-show-dialog.component";
 import { PreviewComponent } from "editor";
+import { NzMessageService } from "ng-zorro-antd/message";
 
 @Component({
   selector: 'app-article',
@@ -29,7 +30,8 @@ export class ArticleComponent implements OnInit {
 
   constructor(private articleService: ArticleService,
               private route: ActivatedRoute,
-              protected modalService: NzModalService) {
+              protected modalService: NzModalService,
+              private messageService: NzMessageService) {
   }
 
   ngOnInit(): void {
@@ -74,5 +76,9 @@ export class ArticleComponent implements OnInit {
     if (data.target && data.target.nodeName.toLowerCase() === 'img') {
       this.showImageDialog(data.target.src);
     }
+  }
+
+  copySuccess() {
+    this.messageService.success('复制成功');
   }
 }
