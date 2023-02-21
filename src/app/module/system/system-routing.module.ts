@@ -10,6 +10,8 @@ import { AddArticleComponent } from "./article/add-article/add-article.component
 import { EditArticleComponent } from "./article/edit-article/edit-article.component";
 import { ManualComponent } from "./manual/manual.component";
 import { ComponentSchemaComponent } from "./component-manager/component-schema/component-schema.component";
+import { ManualArticleComponent } from "./manual/manual-article/manual-article.component";
+import { NotFindPageComponent } from "../../@theme/not-find-page/not-find-page.component";
 
 const routes: Routes = [
   {
@@ -24,7 +26,12 @@ const routes: Routes = [
       { path: 'addArticle', component: AddArticleComponent },
       { path: 'editArticle/:id', component: EditArticleComponent },
       { path: 'manualManager', component: ManualComponent },
-      { path: 'componentSchema', component: ComponentSchemaComponent }
+      { path: 'addManualArticle/:manualId', component: ManualArticleComponent },
+      { path: 'componentSchema', component: ComponentSchemaComponent },
+      {
+        path: '**',
+        component: NotFindPageComponent
+      }
     ]
   }
 ];
