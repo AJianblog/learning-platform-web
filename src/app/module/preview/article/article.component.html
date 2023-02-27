@@ -1,5 +1,9 @@
 <div class="article-preview-bg">
-  <div *ngIf="article" class="article-preview-container">
+  <div
+    *ngIf="article"
+    class="article-preview-container"
+    [class.block]="!tocMenu.length"
+  >
     <div class="left-container" [class]="{ 'no-toc-menu': !tocMenu.length }">
       <div class="article-title-box">
         <h2 class="article-title">{{ article.articleTitle }}</h2>

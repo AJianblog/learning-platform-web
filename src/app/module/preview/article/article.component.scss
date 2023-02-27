@@ -4,6 +4,10 @@
   position: relative;
   margin: 16px auto 0 auto;
 
+  &.block {
+    display: block;
+  }
+
   .left-container {
     max-width: 970px;
     flex: 1;
