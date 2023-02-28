@@ -1,0 +1,13 @@
+<h-form
+  [config]="formFields"
+  (formGroupInit)="formGroupInit($event)"
+></h-form>
+<div class="flex justify-end">
+  <button nz-button class="mr-2" (click)="close()">取消</button>
+  <button
+    nz-button
+    nzType="primary"
+    [nzLoading]="saveLoading"
+    (click)="save()">保存
+  </button>
+</div>

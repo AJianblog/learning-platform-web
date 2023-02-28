@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'addArticle', component: AddArticleComponent },
       { path: 'editArticle/:id', component: EditArticleComponent },
       { path: 'manualManager', component: ManualComponent },
-      { path: 'addManualArticle/:manualId', component: ManualArticleComponent },
+      { path: 'manualArticle/:manualId', component: ManualArticleComponent },
       { path: 'componentSchema', component: ComponentSchemaComponent },
       {
         path: '**',

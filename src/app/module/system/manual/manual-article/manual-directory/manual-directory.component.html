@@ -1,0 +1,37 @@
+<nz-tree
+  *ngIf="nodes.length"
+  class="tree-view"
+  nzBlockNode
+  [nzData]="nodes"
+  (nzClick)="activeNode($event)"
+  (nzDblClick)="openFolder($event)"
+  [nzTreeTemplate]="nzTreeTemplate"
+></nz-tree>
+<div
+  *ngIf="!nodes.length"
+  class="empty-manual-menu"
+>
+  <button
+    nz-button
+    (click)="createManualDirectory('')"
+  >创建目录</button>
+</div>
+<ng-template #nzTreeTemplate let-node let-origin="origin">
+  <div class="custom-node" (contextmenu)="contextMenu($event, menu)">
+      <span
+        nz-icon
+        [nzType]="node.isExpanded ? 'folder-open' : 'folder'"
+        (click)="openFolder(node)"
+      ></span>
+    <span
+      class="folder-name"
+    >{{ node.title }}</span>
+  </div>
+</ng-template>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item (click)="selectDropdown()">Action 1</li>
+    <li nz-menu-item (click)="selectDropdown()">Action 2</li>
+  </ul>
+</nz-dropdown-menu>

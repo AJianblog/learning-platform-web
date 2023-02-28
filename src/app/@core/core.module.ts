@@ -16,6 +16,8 @@ import { ManualService } from "./article/service/ManualService";
 import { ManualImplService } from "./article/service/impl/manual-impl.service";
 import { DynamicComponentService } from "core";
 import { EventCellComponent } from './table-column-components/event-cell/event-cell.component';
+import { ManualDirectoryService } from "./article/service/manual-directory.service";
+import { ManualDirectoryImplService } from "./article/service/impl/manual-directory-impl.service";
 
 
 const SERVICE = [
@@ -24,7 +26,8 @@ const SERVICE = [
   { provide: ArticleTypeService, useClass: ArticleTypeImplService },
   { provide: ArticleTagService, useClass: ArticleTagImplService },
   { provide: ArticleService, useClass: ArticleImplService },
-  { provide: ManualService, useClass: ManualImplService }
+  { provide: ManualService, useClass: ManualImplService },
+  { provide: ManualDirectoryService, useClass: ManualDirectoryImplService }
 ]
 
 const DYNAMIC_COMPONENT = [

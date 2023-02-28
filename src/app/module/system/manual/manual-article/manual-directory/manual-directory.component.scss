@@ -1,0 +1,37 @@
+.tree-view, .empty-manual-menu {
+  display: inline-block;
+  width: 400px;
+  height: 100%;
+  padding-right: .5rem;
+}
+
+nz-tree {
+  //overflow: hidden;
+}
+
+.custom-node {
+  cursor: pointer;
+  line-height: 24px;
+  margin-left: 4px;
+  display: block;
+}
+
+.file-name, .folder-name {
+  margin-left: 4px;
+}
+
+.file-desc, .folder-desc {
+  padding: 0 8px;
+  display: inline-block;
+  background: #87ceff;
+  color: #ffffff;
+  position: relative;
+  left: 12px;
+}
+
+.empty-manual-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}

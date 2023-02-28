@@ -24,6 +24,9 @@ import { EditArticleComponent } from './article/edit-article/edit-article.compon
 import { ManualComponent } from './manual/manual.component';
 import { ManualModifyComponent } from './manual/manual-modify/manual-modify.component';
 import { ComponentSchemaComponent } from './component-manager/component-schema/component-schema.component';
+import { ManualArticleComponent } from './manual/manual-article/manual-article.component';
+import { ManualDirectoryComponent } from './manual/manual-article/manual-directory/manual-directory.component';
+import { ModifyManualDirectoryComponent } from './manual/manual-article/modify-manual-directory/modify-manual-directory.component';
 
 
 @NgModule({
@@ -42,7 +45,10 @@ import { ComponentSchemaComponent } from './component-manager/component-schema/c
     EditArticleComponent,
     ManualComponent,
     ManualModifyComponent,
-    ComponentSchemaComponent
+    ComponentSchemaComponent,
+    ManualArticleComponent,
+    ManualDirectoryComponent,
+    ModifyManualDirectoryComponent
   ],
   imports: [
     CommonModule,
