@@ -1,0 +1,17 @@
+.charts-box {
+  display: flex;
+  padding: 8px;
+  flex-wrap: wrap;
+
+  .charts-card {
+    padding: 4px;
+    width: 12.5%;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding: 8px;
+}

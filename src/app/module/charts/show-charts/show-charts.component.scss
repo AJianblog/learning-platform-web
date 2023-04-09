@@ -1,0 +1,55 @@
+.show-charts-box {
+  display: flex;
+  overflow: hidden;
+
+  .show-charts-left {
+    flex: 1;
+    max-width: 35%;
+  }
+
+  .show-charts-right {
+    flex: 1;
+    display: flex;
+    padding: 10px;
+    background-color: #f3f4fa;
+
+    .charts {
+      flex: 1;
+      box-shadow: rgb(0 0 0 / 10%) 0 0 20px;
+      background-color: #ffffff;
+    }
+  }
+
+  .operator {
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+    height: 30px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .back {
+      padding: 0 8px;
+      cursor: pointer;
+
+      &:hover {
+        color: #ff0000;
+      }
+    }
+
+    .run {
+      background-color: #409eff;
+      color: #ffffff;
+      font-size: 12px;
+    }
+  }
+}
+
+:host ::ng-deep {
+
+  .CodeMirror {
+    width: 100%;
+    height: calc(100vh - 30px);
+  }
+}

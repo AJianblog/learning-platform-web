@@ -1,0 +1,19 @@
+<div class="show-charts-box">
+  <div class="show-charts-left">
+    <div class="operator">
+      <div>
+        <span class="back" (click)="back()">返回</span>
+      </div>
+      <div>
+        <button nz-button class="run" (click)="updateChartsOptions()">
+          <span nz-icon nzType="play-circle" nzTheme="outline"></span>
+          运行
+        </button>
+      </div>
+    </div>
+    <textarea class="codemirror" #ref></textarea>
+  </div>
+  <div class="show-charts-right">
+    <div class="charts" #charts></div>
+  </div>
+</div>

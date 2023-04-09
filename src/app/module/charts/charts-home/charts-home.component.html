@@ -1,0 +1,26 @@
+<div class="charts-box">
+  <ng-template [ngIf]="pageResult">
+    <div class="charts-card" *ngFor="let item of pageResult.records">
+      <nz-card nzHoverable [nzCover]="coverTemplate" (click)="handleClickCard(item)">
+        <nz-card-meta [nz-tooltip]="item.title" [nzTitle]="item.title"></nz-card-meta>
+        <ng-template #coverTemplate>
+          <img class="img" alt="example" [src]="item.thumbnailUrl"/>
+        </ng-template>
+      </nz-card>
+    </div>
+  </ng-template>
+</div>
+<ng-template [ngIf]="pageResult">
+  <div class="pagination">
+    <nz-pagination
+      nzShowSizeChanger
+      nzShowQuickJumper
+      [nzPageIndex]="pageResult.current"
+      [nzTotal]="pageResult.total"
+      [nzPageSize]="pageResult.size"
+      [nzPageSizeOptions]="[8, 16, 24, 32, 40]"
+      (nzPageIndexChange)="pageIndexChange($event)"
+      (nzPageSizeChange)="pageSizeChange($event)"
+    ></nz-pagination>
+  </div>
+</ng-template>
