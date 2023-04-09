@@ -11,6 +11,7 @@ import { PageResult } from "../../../@core/common/entity/PageResult";
 import { NzModalService } from "ng-zorro-antd/modal";
 import { getFitWidth } from "../../../utils/drawerWidth";
 import dayjs from "dayjs";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-manual',
@@ -87,7 +88,9 @@ export class ManualComponent implements OnInit {
 
   constructor(private drawerService: NzDrawerService,
               private manualService: ManualService,
-              private modalService: NzModalService) {
+              private modalService: NzModalService,
+              private activeRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -98,6 +101,13 @@ export class ManualComponent implements OnInit {
     if (button.key === 'add') {
       this.addManual()
     }
+  }
+
+  jumpAddManualArticle(data: any) {
+    this.router.navigate(['../manualArticle', data?.rowData?.manualId], {
+      relativeTo: this.activeRoute
+    }).then(() => {
+    })
   }
 
   addManual() {
@@ -122,7 +132,7 @@ export class ManualComponent implements OnInit {
         this.deleteManual(data.rowData)
       }
     } else if (data.config.key === 'manualName') {
-      console.log(data)
+      this.jumpAddManualArticle(data);
     }
   }
 
