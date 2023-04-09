@@ -18,6 +18,12 @@ import { DynamicComponentService } from "core";
 import { EventCellComponent } from './table-column-components/event-cell/event-cell.component';
 import { ManualDirectoryService } from "./article/service/manual-directory.service";
 import { ManualDirectoryImplService } from "./article/service/impl/manual-directory-impl.service";
+import { ChartsService } from "./charts/service/charts.service";
+import { ChartsImplService } from "./charts/service/impl/charts-impl.service";
+import { ChartsCodeService } from "./charts/service/charts-code.service";
+import { ChartsCodeImplService } from "./charts/service/impl/charts-code-impl.service";
+import { AjaxService } from "./charts/service/AjaxService";
+import { AjaxImplService } from "./charts/service/impl/ajax-impl.service";
 
 
 const SERVICE = [
@@ -27,7 +33,10 @@ const SERVICE = [
   { provide: ArticleTagService, useClass: ArticleTagImplService },
   { provide: ArticleService, useClass: ArticleImplService },
   { provide: ManualService, useClass: ManualImplService },
-  { provide: ManualDirectoryService, useClass: ManualDirectoryImplService }
+  { provide: ManualDirectoryService, useClass: ManualDirectoryImplService },
+  { provide: ChartsService, useClass: ChartsImplService },
+  { provide: ChartsCodeService, useClass: ChartsCodeImplService },
+  { provide: AjaxService, useClass: AjaxImplService }
 ]
 
 const DYNAMIC_COMPONENT = [
