@@ -1,69 +1,37 @@
 #!/bin/bash
-# 确保脚本抛出遇到的错误
-set -e
-# 个人博客前端
-remoteImages[0]="registry.cn-guangzhou.aliyuncs.com/hezhijian/learning-platform-web"
-localImages[0]="learning-platform-web"
-ports[0]="5000"
-linkContainer[0]="learning"
 
-# 个人博客后端镜像
-remoteImages[1]="registry.cn-guangzhou.aliyuncs.com/hezhijian/learning"
-localImages[1]="learning"
-ports[1]="8000"
-linkContainer[1]="learningSql"
+# 部署步骤
+# 1. 判断容器是否在运行，在运行的话停止
+# 2. 删掉要创建的镜像
+# 3. 创建镜像
+# 4. 运行镜像
+runContainerName="learning-platform-web"
+ports="5000"
+linkContainer="learning"
 
-#remoteImages[2]="registry.cn-guangzhou.aliyuncs.com/hezhijian/diagram-web"
-
-for(( i=0; i < ${#remoteImages[@]}; i++))
-#${#array[@]}获取数组长度用于循环
-do
-  echo "$i.${remoteImages[i]}";
-done;
-echo -n "选择你要部署的docker镜像:"
-selectData=0
-selectImage=${remoteImages[$selectData]}
-echo "你选择的是$selectImage"
-
-# 判断镜像是否存在，如果存在直接删除
-if [[ -n $(sudo docker images -q "$selectImage") ]]
-then
-  echo "存在${selectImage}镜像,即将删除镜像"
-  sudo docker image rm "$selectImage":latest
-else
-  echo "不存在${selectImage}镜像"
-fi
-
-# 重新拉取镜像
-echo "重新拉取${selectImage}镜像"
-sudo docker pull "$selectImage"
-#
 # 判断容器是否在运行，在的话停掉运行的容器
-echo "判断${localImages[$selectData]}容器是否在运行，在的话停掉运行的容器"
-if [[ -n $(sudo docker ps -q -f "name=^${localImages[$selectData]}") ]]
+echo "判断${runContainerName}容器是否在运行，在的话停掉运行的容器"
+if [[ -n $(sudo docker ps -q -f "name=^${runContainerName}") ]]
 then
-  echo "${localImages[$selectData]}容器正在运行，即将停用该容器"
-  sudo docker stop "${localImages[$selectData]}"
-  sudo docker rm "${localImages[$selectData]}"
+  echo "${runContainerName}容器正在运行，即将停用该容器"
+  sudo docker stop "${runContainerName}"
+  sudo docker rm "${runContainerName}"
 else
-  echo "${localImages[$selectData]}容器不存在"
+  echo "${runContainerName}容器不存在, 无需停止"
 fi
+
 
 # 将镜像删除
-echo "判断${localImages[$selectData]}镜像是否存在"
-if [[ -n $(sudo docker images -q "${localImages[$selectData]}") ]]
+echo "判断${runContainerName}镜像是否存在"
+if [[ -n $(sudo docker images -q "${runContainerName}") ]]
 then
-  echo "${localImages[$selectData]}镜像存在，即将删除该镜像"
-  sudo docker image rm "${localImages[$selectData]}":latest
+  echo "${runContainerName}镜像存在，即将删除该镜像"
+  sudo docker image rm "${runContainerName}":latest
 else
-  echo "不存在${localImages[$selectData]}镜像"
+  echo "不存在${runContainerName}镜像"
 fi
 
-# 将拉取最新的镜像改名
-echo "将拉取的${selectImage}改名为${localImages[$selectData]}"
-imageId=$(sudo docker images -q "$selectImage")
-echo "${imageId}"
-sudo docker tag "${imageId}" "${localImages[$selectData]}"
-# 运行镜像
-sudo docker run --name "${localImages[$selectData]}" -p "${ports[$selectData]}":80 -d --link "${linkContainer[$selectData]}:${linkContainer[$selectData]}" "${localImages[$selectData]}"
-
+echo "开始创建镜像"
+sudo docker build -f Dockerfile -t "${runContainerName}" .
+# 运行镜像， 用了别名，在nginx可以使用别名
+sudo docker run --name "${runContainerName}" -p "${ports}":80 -d --link "${linkContainer}:${linkContainer}" "${runContainerName}"
