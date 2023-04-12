@@ -9,6 +9,9 @@ runContainerName="learning-platform-web"
 ports="5000"
 linkContainer="learning"
 
+# 更新最新代码
+git pull origin main
+
 # 判断容器是否在运行，在的话停掉运行的容器
 echo "判断${runContainerName}容器是否在运行，在的话停掉运行的容器"
 if [[ -n $(sudo docker ps -q -f "name=^${runContainerName}") ]]
