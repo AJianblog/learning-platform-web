@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartsComponent } from "./charts.component";
 import { ChartsHomeComponent } from "./charts-home/charts-home.component";
 import { ShowChartsComponent } from "./show-charts/show-charts.component";
+import { SynchronizationComponent } from "./synchronization/synchronization.component";
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: ChartsComponent,
     children: [
       { path: '', component: ChartsHomeComponent },
-      { path: 'showCharts', component: ShowChartsComponent }
+      { path: 'showCharts', component: ShowChartsComponent },
+      { path: 'synchronization', component: SynchronizationComponent }
     ]
   }
 ];
