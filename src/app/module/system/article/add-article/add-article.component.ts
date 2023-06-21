@@ -33,10 +33,11 @@ export class AddArticleComponent implements OnInit {
   }
 
   options: any = {
-    lineNumbers: true,
-    theme: 'material',
-    mode: 'markdown',
-    indentUnit: 4
+    language: "markdown",
+    roundedSelection: false,
+    scrollBeyondLastLine: false,
+    readOnly: false,
+    automaticLayout: true
   }
 
   constructor(private fb: FormBuilder,
