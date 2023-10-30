@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Menu } from "../../@core/system/entity/menu";
 
 @Component({
@@ -10,12 +10,28 @@ export class SideMenuComponent implements OnInit {
   @Input()
   menus: Menu[] = [];
 
+  @Input()
+  inlineCollapsed: boolean = false;
+
+  @Output()
+  toggleCollapsed: EventEmitter<void> = new EventEmitter<void>();
+
 
   constructor() {
+    console.log(this.menus);
   }
 
   ngOnInit(): void {
 
   }
 
+  menuFoldClick() {
+    this.toggleCollapsed.emit();
+  }
+
+  showMenu() {
+    console.log(this.menus);
+  }
+
+  protected readonly isFinite = isFinite;
 }

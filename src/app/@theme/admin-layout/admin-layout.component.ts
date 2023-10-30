@@ -21,10 +21,11 @@ export class AdminLayoutComponent implements OnInit {
    * drawer首次出现的状态， true: 打开, false: 关闭
    */
   opened: boolean = true;
+  isCollapsed: boolean = false;
 
 
   constructor(private menuService: MenuService) {
-    this.opened = window.innerWidth > 1280
+    this.opened = window.innerWidth > 1280;
   }
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class AdminLayoutComponent implements OnInit {
   findUserMenu() {
     this.menuService.findUserMenu().subscribe(data => {
       this.menus = data;
-    })
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -55,6 +56,10 @@ export class AdminLayoutComponent implements OnInit {
     } else {
       this.mode = 'side';
     }
+  }
+
+  toggleCollapsed() {
+    this.isCollapsed = !this.isCollapsed;
   }
 
 }

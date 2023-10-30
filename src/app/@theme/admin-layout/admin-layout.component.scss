@@ -1,45 +1,15 @@
-.mat-drawer {
-  min-width: 240px;
+:host {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
 }
 
-.drawer-container {
-  display: flex;
-  height: calc(100vh - 56px);
-  overflow: auto;
-  background-color: #f0f2f5;
+.ant-layout-header {
+  padding: 0;
+}
 
-  ::ng-deep .mat-drawer-content {
-    width: 100%;
-  }
-
-  .breadcrumb {
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
-    padding: 0 0.5rem;
-  }
-
-  .nav-bar {
-    width: 100%;
-    position: relative;
-    z-index: 5;
-    background-color: #ffffff;
-    padding: 0.25rem 0.5rem;
-    height: 32px;
-    display: flex;
-    align-items: center;
-
-    .menu {
-      cursor: pointer;
-    }
-  }
-
-  .drawer-main {
-    padding: 8px;
-    width: 100%;
-    height: calc(100% - 80px);
-    overflow: auto;
-  }
+.ant-menu.ant-menu-inline-collapsed .ant-menu-submenu > .ant-menu-submenu-title {
+  left: 0;
+  padding: 0 calc(50% - 16px / 2);
+  text-overflow: clip;
 }

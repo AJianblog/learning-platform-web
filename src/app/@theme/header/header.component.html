@@ -1,13 +1,8 @@
-<mat-toolbar color="primary" class="mat-elevation-z6 toolbar">
-  <div class="header-left" [routerLink]="['/']">
-    <div class="logo">
-      <img src="assets/logo/logo.svg" alt="logo" />
-    </div>
-    <div class="title">每日一学</div>
-  </div>
+<nz-header>
   <div *ngIf="!isLogin" class="login-box">
     <div routerLink="/login">登陆</div>
   </div>
+  <div class="toolbar-empty-box"></div>
   <div *ngIf="isLogin">
     <nz-avatar
       class="avatar"
@@ -22,11 +17,12 @@
     >
     </nz-avatar>
   </div>
-</mat-toolbar>
-<div class="toolbar-empty-box"></div>
-<nz-dropdown-menu #menu="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item routerLink="/system/userManager">后台管理</li>
-    <li nz-menu-item (click)="loginOut()">注销</li>
-  </ul>
-</nz-dropdown-menu>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item routerLink="/system/userManager">后台管理</li>
+      <li nz-menu-item (click)="loginOut()">注销</li>
+    </ul>
+  </nz-dropdown-menu>
+</nz-header>
+
