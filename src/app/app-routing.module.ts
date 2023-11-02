@@ -24,6 +24,21 @@ const routes: Routes = [
     data: {
       code: 'system'
     }
+  },
+  {
+    path: 'charts',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./module/charts/charts.module').then(m => m.ChartsModule),
+    data: {
+      code: 'charts'
+    }
+  },
+  {
+    path: 'resume',
+    loadChildren: () => import('./module/resume/resume.module').then(m => m.ResumeModule),
+    data: {
+      code: 'resume'
+    }
   }
 ];
 
