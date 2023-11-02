@@ -17,4 +17,8 @@ export class ManualDirectoryImplService implements ManualDirectoryService{
   addManualDirectory(manualMenu: ManualDirectory): Observable<ManualDirectory> {
     return this.http.post<ManualDirectory>(`${this.url}/addManualMenu`, manualMenu);
   }
+
+  selectByManualId(manualId: string): Observable<ManualDirectory[]> {
+    return this.http.get<ManualDirectory[]>(`${this.url}/selectByManualId/${manualId}`);
+  }
 }
