@@ -1,22 +1,22 @@
+<div class="header-fill"></div>
 <nz-header>
   <div *ngIf="!isLogin" class="login-box">
     <div routerLink="/login">登陆</div>
   </div>
   <div class="toolbar-empty-box"></div>
-  <div *ngIf="isLogin">
-    <nz-avatar
-      class="avatar"
-      [nzGap]="4"
-      [nzText]="nickName"
-      [ngStyle]="{ 'background-color': '#7265e6' }"
-      nzSize="large"
-      style="vertical-align: middle;"
-      nz-dropdown
-      nzTrigger="click"
-      [nzDropdownMenu]="menu"
-    >
-    </nz-avatar>
-  </div>
+  <nz-avatar
+    *ngIf="isLogin"
+    class="avatar"
+    [nzGap]="2"
+    [nzText]="nickName"
+    [ngStyle]="{ 'background-color': '#7265e6' }"
+    nzSize="small"
+    style="vertical-align: middle;"
+    nz-dropdown
+    nzTrigger="click"
+    [nzDropdownMenu]="menu"
+  >
+  </nz-avatar>
 
   <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
@@ -25,4 +25,3 @@
     </ul>
   </nz-dropdown-menu>
 </nz-header>
-

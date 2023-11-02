@@ -5,9 +5,18 @@
 nz-header {
   background: #fff;
   padding: 0 16px;
-
+  height: 48px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  position: fixed;
+  top: 0;
+  width: calc(100% - 200px);
+}
+
+.header-fill {
+  height: 48px;
 }
 
 .login-box {
