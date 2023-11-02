@@ -1,30 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~codemirror/lib/codemirror";
-@import "~codemirror/theme/material";
-@import "~ng-zorro-antd/style/index.min.css";
-@import "~ng-zorro-antd/descriptions/style/index.min.css";
-@import "~ng-zorro-antd/drawer/style/index.min.css";
-@import "~ng-zorro-antd/dropdown/style/index.min.css";
-@import "~ng-zorro-antd/empty/style/index.min.css";
-@import "~ng-zorro-antd/form/style/index.min.css";
-@import "~ng-zorro-antd/input/style/index.min.css";
-@import "~ng-zorro-antd/menu/style/index.min.css";
-@import "~ng-zorro-antd/message/style/index.min.css";
-@import "~ng-zorro-antd/modal/style/index.min.css";
-@import "~ng-zorro-antd/select/style/index.min.css";
-@import "~ng-zorro-antd/tree/style/index.min.css";
-@import "~ng-zorro-antd/tree-select/style/index.min.css";
-@import "~ng-zorro-antd/tree-view/style/index.min.css";
-@import "~ng-zorro-antd/table/style/index.min.css";
-@import "~ng-zorro-antd/avatar/style/index.min.css";
-@import "~ng-zorro-antd/card/style/index.min.css";
-@import "~ng-zorro-antd/grid/style/index.min.css";
-@import "~ng-zorro-antd/result/style/index.min.css";
+@import "codemirror/lib/codemirror";
+@import "codemirror/theme/material";
 @import "assets/font/iconfont.css";
+@import "ng-zorro-antd/ng-zorro-antd.min.css";
 
 
 html, body {
   height: 100%;
+  color: rgb(31, 129, 227);
 }
 
 body {
@@ -35,6 +18,7 @@ body {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 .full-container {
