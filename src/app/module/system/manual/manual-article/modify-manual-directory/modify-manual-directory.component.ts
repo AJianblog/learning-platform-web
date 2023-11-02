@@ -43,6 +43,9 @@ export class ModifyManualDirectoryComponent implements OnInit {
   formGroup: FormGroup | undefined;
 
   @Input()
+  manualId: string = '';
+
+  @Input()
   set parentManualDirectoryIds(parentManualDirectoryIds: NzTreeNodeOptions[]) {
     const field: TreeSelectFormField | undefined = this.formFields.find(item => item.key === 'parentManualDirectoryId');
     if (field) {
@@ -54,7 +57,8 @@ export class ModifyManualDirectoryComponent implements OnInit {
   saveLoading: boolean = false;
 
   constructor(private manualDirectoryService: ManualDirectoryService,
-              private drawerRef: NzDrawerRef) { }
+              private drawerRef: NzDrawerRef) {
+  }
 
   ngOnInit(): void {
   }
@@ -71,11 +75,12 @@ export class ModifyManualDirectoryComponent implements OnInit {
     this.saveLoading = true
     const data: ManualDirectory = this.formGroup?.value;
     data.sort = Number(data.sort);
+    data.manualId = this.manualId;
     this.manualDirectoryService.addManualDirectory(data).subscribe({
       next: (manualDirectory: ManualDirectory) => {
         this.drawerRef.close(manualDirectory);
       },
-      complete: () => {
+      error: () => {
         this.saveLoading = false
       }
     })
