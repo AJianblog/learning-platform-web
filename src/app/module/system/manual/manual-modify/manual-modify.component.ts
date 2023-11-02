@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormField } from "form-render/lib/entity/FormField";
 import { FormFieldEnum } from "form-render";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { ManualService } from "../../../../@core/article/service/ManualService";
 import { Manual } from "../../../../@core/article/entity/Manual";
 import { NzDrawerRef } from "ng-zorro-antd/drawer";
@@ -13,7 +13,7 @@ import { NzDrawerRef } from "ng-zorro-antd/drawer";
 })
 export class ManualModifyComponent implements OnInit {
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   formFields: FormField[] = [
     {
@@ -43,7 +43,7 @@ export class ManualModifyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
     if (this.manual) {
       this.formGroup.patchValue(this.manual);

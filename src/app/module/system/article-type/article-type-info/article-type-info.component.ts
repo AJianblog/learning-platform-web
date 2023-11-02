@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormField } from "form-render/lib/entity/FormField";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { ArticleType } from "../../../../@core/article/entity/ArticleType";
 import { ArticleTypeService } from "../../../../@core/article/service/article-type.service";
 import { NzDrawerRef } from "ng-zorro-antd/drawer";
@@ -21,7 +21,7 @@ export class ArticleTypeInfoComponent implements OnInit {
     }
   ]
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Input()
   articleType: ArticleType | undefined;
@@ -32,7 +32,7 @@ export class ArticleTypeInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
     debugger
     if (this.articleType) {

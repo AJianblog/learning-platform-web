@@ -5,7 +5,7 @@ import { SelectField } from "form-render/lib/entity/SelectField";
 import { ArticleTypeService } from "../../../../@core/article/service/article-type.service";
 import { ArticleTagService } from "../../../../@core/article/service/article-tag.service";
 import { ArticleType } from "../../../../@core/article/entity/ArticleType";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { ArticleTag } from "../../../../@core/article/entity/ArticleTag";
 import { NzDrawerRef } from "ng-zorro-antd/drawer";
 
@@ -34,7 +34,7 @@ export class ArticleTagInfoComponent implements OnInit {
     } as SelectField
   ]
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Input()
   get articleType(): ArticleType[] {
@@ -65,7 +65,7 @@ export class ArticleTagInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
     if (this.articleTag) {
       this.formGroup.patchValue(this.articleTag);

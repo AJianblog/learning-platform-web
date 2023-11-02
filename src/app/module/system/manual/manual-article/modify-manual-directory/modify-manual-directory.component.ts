@@ -5,7 +5,7 @@ import { TreeSelectFormField } from "form-render/lib/entity/TreeSelectFormField"
 import { NzTreeNodeOptions } from "ng-zorro-antd/tree";
 import { ManualDirectoryService } from "../../../../../@core/article/service/manual-directory.service";
 import { ManualDirectory } from "../../../../../@core/article/entity/ManualDirectory";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { NzDrawerRef } from "ng-zorro-antd/drawer";
 
 @Component({
@@ -40,7 +40,7 @@ export class ModifyManualDirectoryComponent implements OnInit {
     }
   ];
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Input()
   manualId: string = '';
@@ -63,7 +63,7 @@ export class ModifyManualDirectoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
   }
 

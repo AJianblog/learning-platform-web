@@ -3,7 +3,7 @@ import { FormField } from "form-render/lib/entity/FormField";
 import { FormFieldEnum } from "form-render";
 import { SelectField } from "form-render/lib/entity/SelectField";
 import { ProxyPrefix } from "../../../../@core/common/enum/ProxyPrefix";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { ArticleTagService } from "../../../../@core/article/service/article-tag.service";
 import { ArticleTag } from "../../../../@core/article/entity/ArticleTag";
 import { Article } from "../../../../@core/article/entity/Article";
@@ -17,7 +17,7 @@ import { NzDrawerRef } from "ng-zorro-antd/drawer";
 })
 export class ArticleInfoComponent implements OnInit {
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   @Input()
   article: Article | undefined;
@@ -59,7 +59,7 @@ export class ArticleInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
     if (this.article) {
       this.formGroup.patchValue(this.article);

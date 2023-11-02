@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormField } from "form-render/lib/entity/FormField";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { UserService } from "../../../../@core/system/service/user.service";
 import { FormFieldEnum } from "form-render";
 
@@ -50,7 +50,7 @@ export class UserEditComponent implements OnInit {
     }
   ]
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
 
   constructor(private userService: UserService) {
@@ -59,7 +59,7 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
   }
 
