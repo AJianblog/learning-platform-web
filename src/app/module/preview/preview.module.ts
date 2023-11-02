@@ -11,6 +11,7 @@ import { ArticleComponent } from './article/article.component';
 import { EditorModule } from "editor";
 import { TocMenuComponent } from './article/toc-menu/toc-menu.component';
 import { ImageShowDialogComponent } from './article/image-show-dialog/image-show-dialog.component';
+import { BirdComponent } from './home/bird/bird.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ImageShowDialogComponent } from './article/image-show-dialog/image-show
     ArticleItemComponent,
     ArticleComponent,
     TocMenuComponent,
-    ImageShowDialogComponent
+    ImageShowDialogComponent,
+    BirdComponent
   ],
   imports: [
     CommonModule,
