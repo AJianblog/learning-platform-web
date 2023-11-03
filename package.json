@@ -31,7 +31,7 @@
     "form-render": "file:libs/form-render-0.0.1-beta.1.tgz",
     "generator": "file:libs/generator-0.0.1-beta.1.tgz",
     "js-base64": "^3.7.2",
-    "ng-zorro-antd": "^14.3.0",
+    "ng-zorro-antd": "^15.1.1",
     "rxjs": "~7.5.0",
     "table-render": "file:libs/table-render-0.0.2-beta.1.tgz",
     "three": "^0.153.0",
