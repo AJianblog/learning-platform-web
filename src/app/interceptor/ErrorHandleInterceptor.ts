@@ -13,7 +13,7 @@ import {
 } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map, tap } from "rxjs/operators";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatLegacySnackBar as MatSnackBar } from "@angular/material/legacy-snack-bar";
 import { NzMessageService } from "ng-zorro-antd/message";
 import { Router } from "@angular/router";
 

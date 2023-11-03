@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ErrorHandleInterceptor } from "./ErrorHandleInterceptor";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatLegacySnackBar as MatSnackBar } from "@angular/material/legacy-snack-bar";
 import { SnackBarService } from "../service/snack-bar.service";
 import { AuthInterceptor } from "./AuthInterceptor";
 import { NzMessageService } from "ng-zorro-antd/message";
