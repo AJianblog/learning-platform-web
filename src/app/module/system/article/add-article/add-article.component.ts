@@ -58,7 +58,7 @@ export class AddArticleComponent implements OnInit {
 
   release() {
     this.article = { ...this.article, ...this.formGroup.value }
-    const drawerRef = this.drawerService.create<ArticleInfoComponent, { article: Article }, Article>({
+    const drawerRef = this.drawerService.create<ArticleInfoComponent, { article: Article }>({
       nzTitle: '文章信息',
       nzContent: ArticleInfoComponent,
       nzMaskClosable: false,

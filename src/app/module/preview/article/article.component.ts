@@ -66,7 +66,7 @@ export class ArticleComponent implements OnInit {
       nzCloseIcon: '',
       nzCentered: true,
       nzWidth: 'auto',
-      nzComponentParams: {
+      nzData: {
         imageUrl: imageUrl
       }
     })
