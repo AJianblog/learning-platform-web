@@ -17,6 +17,7 @@ import { NzCardModule } from "ng-zorro-antd/card";
 import { NzPaginationModule } from "ng-zorro-antd/pagination";
 import { NzResultModule } from "ng-zorro-antd/result";
 import { NzLayoutModule } from "ng-zorro-antd/layout";
+import { NzTabsModule } from "ng-zorro-antd/tabs";
 
 const zorroModule = [
   NzButtonModule,
@@ -36,7 +37,8 @@ const zorroModule = [
   NzCardModule,
   NzPaginationModule,
   NzResultModule,
-  NzLayoutModule
+  NzLayoutModule,
+  NzTabsModule
 ];
 
 @NgModule({
