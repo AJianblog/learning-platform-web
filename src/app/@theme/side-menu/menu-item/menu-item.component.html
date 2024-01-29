@@ -15,10 +15,12 @@
   <li
     *ngIf="!menu.children || !menu.children.length"
     nz-menu-item
-    [routerLink]="[menu.url]"
+    nzMatchRouter
   >
-    <span nz-icon nzType="mail"></span>
-    <span>{{ menu.menuName }}</span>
+    <a [routerLink]="[menu.url]">
+      <span nz-icon nzType="mail"></span>
+      <span>{{ menu.menuName }}</span>
+    </a>
   </li>
 
 </ng-template>
