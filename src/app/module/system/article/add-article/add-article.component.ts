@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { Article } from "../../../../@core/article/entity/Article";
 import { NzDrawerService } from "ng-zorro-antd/drawer";
 import { ArticleInfoComponent } from "../article-info/article-info.component";
@@ -16,7 +16,7 @@ export class AddArticleComponent implements OnInit {
   private _article: Article | undefined;
 
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   lazy: boolean = false;
 
@@ -33,13 +33,14 @@ export class AddArticleComponent implements OnInit {
   }
 
   options: any = {
-    lineNumbers: true,
-    theme: 'material',
-    mode: 'markdown',
-    indentUnit: 4
+    language: "markdown",
+    roundedSelection: false,
+    scrollBeyondLastLine: false,
+    readOnly: false,
+    automaticLayout: true
   }
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private drawerService: NzDrawerService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -57,7 +58,7 @@ export class AddArticleComponent implements OnInit {
 
   release() {
     this.article = { ...this.article, ...this.formGroup.value }
-    const drawerRef = this.drawerService.create<ArticleInfoComponent, { article: Article }, Article>({
+    const drawerRef = this.drawerService.create<ArticleInfoComponent, { article: Article }>({
       nzTitle: '文章信息',
       nzContent: ArticleInfoComponent,
       nzMaskClosable: false,

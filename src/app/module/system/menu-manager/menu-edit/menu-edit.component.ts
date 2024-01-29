@@ -3,7 +3,7 @@ import { FormField } from "form-render/lib/entity/FormField";
 import { TreeSelectFormField } from "form-render/lib/entity/TreeSelectFormField";
 import { NzTreeNodeOptions } from "ng-zorro-antd/tree";
 import { NzTreeNode } from "ng-zorro-antd/core/tree";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { MenuService } from "../../../../@core/system/service/menu.service";
 import { NzDrawerRef } from "ng-zorro-antd/drawer";
 import { Menu } from "../../../../@core/system/entity/menu";
@@ -41,7 +41,7 @@ export class MenuEditComponent implements OnInit {
   @Input()
   menuInfo: Menu | undefined;
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
 
   menuField: FormField[] = [
     {
@@ -111,7 +111,7 @@ export class MenuEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
     if (this.menuInfo) {
       this.formGroup.patchValue(this.menuInfo as any)

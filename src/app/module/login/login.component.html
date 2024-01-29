@@ -1,33 +1,49 @@
-<div class="login-box">
-  <div class="login-container">
-    <div class="login-description">
-      <img class="login-box-bg" src="assets/logo/login-box-bg.svg" alt="图片">
-      <h2 class="login-name">每日一学</h2>
-      <div>
-      </div>
-    </div>
-    <div class="card-box">
-      <div class="form-box">
-        <div>
-          <form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="userLogin()">
-            <mat-form-field>
-              <input matInput placeholder="邮箱" formControlName="account">
-              <mat-error *ngIf="account.invalid">{{getAccountErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-              <input type="password" matInput placeholder="密码" formControlName="password">
-              <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <div>
-              <button nz-button type="submit" class="login-form-button" [nzLoading]="loginButtonLoading">
-                登录
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+<div class="flex justify-center">
+  <div class="head flex align-center">
+    <img class="logo" alt="logo图片" src="./assets/image/logo-color.svg"/>
+    <span class="title">每日一学</span>
   </div>
-
 </div>
+<div class="login-form-wrap">
+  <form class="login-form" nz-form [formGroup]="loginFormGroup" (ngSubmit)="userLogin()">
+    <nz-tabset>
+      <nz-tab nzTitle="账户密码登录">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="user" [nzSize]="'large'">
+              <input type="text" formControlName="account" nz-input placeholder="用户名"
+                     [placeholder]="'请输入账号名'"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="lock" [nzSize]="'large'">
+              <input type="password" autocomplete="on" formControlName="password" nz-input placeholder="密码"
+                     [placeholder]="'请输入密码'"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-tab>
 
+      <nz-tab nzTitle="邮箱登录">
+        <!--        <nz-form-item>-->
+        <!--          <nz-form-control nzErrorTip="请输入用户名!">-->
+        <!--            <nz-input-group nzPrefixIcon="mobile" [nzSize]="'large'">-->
+        <!--              <input type="text" autocomplete="on" formControlName="userName" nz-input placeholder="手机号" />-->
+        <!--            </nz-input-group>-->
+        <!--          </nz-form-control>-->
+        <!--        </nz-form-item>-->
+        <!--        <nz-form-item nz-row nzJustify="space-between">-->
+        <!--          <nz-form-control class="flex-1" nz-col nzErrorTip="请输入验证码!" style="max-width: 65%" [nzSm]="16" [nzXs]="15">-->
+        <!--            <nz-input-group nzPrefixIcon="mail" [nzSize]="'large'">-->
+        <!--              <input type="password" formControlName="password" nz-input placeholder="密码" />-->
+        <!--            </nz-input-group>-->
+        <!--          </nz-form-control>-->
+        <!--          <button class="p-0" nz-button nz-col nzType="default" [nzSize]="'large'" [nzSm]="7" [nzXs]="7">获取验证码</button>-->
+        <!--        </nz-form-item>-->
+      </nz-tab>
+    </nz-tabset>
+    <button class="login-form-button login-form-margin" nz-button nzSize="large" [nzType]="'primary'">登 录</button>
+  </form>
+</div>

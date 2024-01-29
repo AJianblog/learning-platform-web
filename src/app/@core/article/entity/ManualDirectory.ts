@@ -5,16 +5,16 @@ export interface ManualDirectory {
   /**
    * 手册菜单id
    */
-  manualMenuId: string;
+  manualDirectoryId: string;
   /**
    * 关联的手册id
    */
   manualId: string;
 
   /**
-   * 关联的文章id
+   * 文章内容
    */
-  articleId: string;
+  articleValue: string;
 
   /**
    * 手册目录名称

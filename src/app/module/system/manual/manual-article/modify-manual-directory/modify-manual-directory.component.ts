@@ -5,7 +5,7 @@ import { TreeSelectFormField } from "form-render/lib/entity/TreeSelectFormField"
 import { NzTreeNodeOptions } from "ng-zorro-antd/tree";
 import { ManualDirectoryService } from "../../../../../@core/article/service/manual-directory.service";
 import { ManualDirectory } from "../../../../../@core/article/entity/ManualDirectory";
-import { FormGroup } from "@angular/forms";
+import { UntypedFormGroup } from "@angular/forms";
 import { NzDrawerRef } from "ng-zorro-antd/drawer";
 
 @Component({
@@ -40,7 +40,10 @@ export class ModifyManualDirectoryComponent implements OnInit {
     }
   ];
 
-  formGroup: FormGroup | undefined;
+  formGroup: UntypedFormGroup | undefined;
+
+  @Input()
+  manualId: string = '';
 
   @Input()
   set parentManualDirectoryIds(parentManualDirectoryIds: NzTreeNodeOptions[]) {
@@ -54,12 +57,13 @@ export class ModifyManualDirectoryComponent implements OnInit {
   saveLoading: boolean = false;
 
   constructor(private manualDirectoryService: ManualDirectoryService,
-              private drawerRef: NzDrawerRef) { }
+              private drawerRef: NzDrawerRef) {
+  }
 
   ngOnInit(): void {
   }
 
-  formGroupInit(formGroup: FormGroup) {
+  formGroupInit(formGroup: UntypedFormGroup) {
     this.formGroup = formGroup;
   }
 
@@ -71,11 +75,12 @@ export class ModifyManualDirectoryComponent implements OnInit {
     this.saveLoading = true
     const data: ManualDirectory = this.formGroup?.value;
     data.sort = Number(data.sort);
+    data.manualId = this.manualId;
     this.manualDirectoryService.addManualDirectory(data).subscribe({
       next: (manualDirectory: ManualDirectory) => {
         this.drawerRef.close(manualDirectory);
       },
-      complete: () => {
+      error: () => {
         this.saveLoading = false
       }
     })

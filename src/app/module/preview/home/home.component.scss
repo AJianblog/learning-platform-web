@@ -1,5 +1,5 @@
 .blog-hero {
-  height: 350px;
+  height: 600px;
   width: 100%;
   background: #eee;
   position: relative;
@@ -9,26 +9,26 @@
   align-items: center;
 
   .mask {
-    background: url("../../../../assets/image/hero.jpg") center/cover no-repeat;
-    background-position-y: top;
+    //background: url("../../../../assets/image/hero.jpg") center/cover no-repeat;
+    //background-position-y: top;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-
-    &:after {
-      display: block;
-      content: '';
-      background: rgb(153, 153, 153);
-      opacity: .2;
-      z-index: 2;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
+    //
+    //&:after {
+    //  display: block;
+    //  content: '';
+    //  background: rgb(153, 153, 153);
+    //  opacity: .2;
+    //  z-index: 2;
+    //  position: absolute;
+    //  top: 0;
+    //  bottom: 0;
+    //  left: 0;
+    //  right: 0;
+    //}
   }
 
   .logo {

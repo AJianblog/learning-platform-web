@@ -1,8 +1,26 @@
-<ul nz-menu nzMode="inline">
-  <ng-container *ngFor="let menu of menus">
-    <li *ngIf="menu.children && menu.children.length" nz-submenu [nzTitle]="menu.menuName">
-      <app-side-menu [menus]="menu.children"></app-side-menu>
-    </li>
-    <li *ngIf="!menu.children || !menu.children.length" nz-menu-item [routerLink]="[menu.url]">{{ menu.menuName }}</li>
-  </ng-container>
-</ul>
+<div class="side-menu-container">
+  <div class="header" [routerLink]="['/']">
+    <div class="logo">
+      <img src="assets/logo/logo.svg" alt="logo"/>
+    </div>
+    <div class="title">每日一学</div>
+  </div>
+  <ul
+    nz-menu
+    nzMode="inline"
+    nzTheme="dark"
+    [nzInlineCollapsed]="inlineCollapsed"
+  >
+    <ng-container *ngFor="let menu of menus">
+      <app-menu-item [menu]="menu"></app-menu-item>
+    </ng-container>
+  </ul>
+
+  <div
+    class="side-footer"
+    (click)="menuFoldClick()"
+  >
+    <span nz-icon nzType="menu-fold" nzTheme="outline"></span>
+  </div>
+
+</div>

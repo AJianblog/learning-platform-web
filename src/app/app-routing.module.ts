@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from "./guard/auth.guard";
+import { RouterChangeGuard } from "./guard/router-change.guard";
 
 const routes: Routes = [
   {
@@ -20,9 +21,25 @@ const routes: Routes = [
   {
     path: 'system',
     canActivate: [AuthGuard],
+    canActivateChild: [RouterChangeGuard],
     loadChildren: () => import('./module/system/system.module').then(m => m.SystemModule),
     data: {
       code: 'system'
+    }
+  },
+  {
+    path: 'charts',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./module/charts/charts.module').then(m => m.ChartsModule),
+    data: {
+      code: 'charts'
+    }
+  },
+  {
+    path: 'resume',
+    loadChildren: () => import('./module/resume/resume.module').then(m => m.ResumeModule),
+    data: {
+      code: 'resume'
     }
   }
 ];

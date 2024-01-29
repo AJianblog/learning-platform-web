@@ -11,6 +11,8 @@ import { CoreModule } from "core";
 import { ArticleShowPipe } from "./pipe/article-show.pipe";
 import { FooterComponent } from './footer/footer.component';
 import { NotFindPageComponent } from './not-find-page/not-find-page.component';
+import { MenuItemComponent } from './side-menu/menu-item/menu-item.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NotFindPageComponent } from './not-find-page/not-find-page.component';
     TableToolsComponent,
     ArticleShowPipe,
     FooterComponent,
-    NotFindPageComponent
+    NotFindPageComponent,
+    MenuItemComponent,
+    TabsComponent
   ],
   imports: [
     MaterialModule,
@@ -43,6 +47,6 @@ export class ThemeModule {
     return {
       ngModule: ThemeModule,
       providers: []
-    }
+    };
   }
 }

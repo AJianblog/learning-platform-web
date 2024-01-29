@@ -1,6 +1,7 @@
 .show-charts-box {
   display: flex;
   overflow: hidden;
+  height: calc(100vh - 56px);
 
   .show-charts-left {
     flex: 1;

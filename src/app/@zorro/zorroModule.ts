@@ -16,6 +16,8 @@ import { NzToolTipModule } from "ng-zorro-antd/tooltip";
 import { NzCardModule } from "ng-zorro-antd/card";
 import { NzPaginationModule } from "ng-zorro-antd/pagination";
 import { NzResultModule } from "ng-zorro-antd/result";
+import { NzLayoutModule } from "ng-zorro-antd/layout";
+import { NzTabsModule } from "ng-zorro-antd/tabs";
 
 const zorroModule = [
   NzButtonModule,
@@ -34,8 +36,10 @@ const zorroModule = [
   NzToolTipModule,
   NzCardModule,
   NzPaginationModule,
-  NzResultModule
-]
+  NzResultModule,
+  NzLayoutModule,
+  NzTabsModule
+];
 
 @NgModule({
   declarations: [],
@@ -51,6 +55,6 @@ export class ZorroModule {
     return {
       ngModule: ZorroModule,
       providers: []
-    }
+    };
   }
 }

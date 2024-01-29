@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from "@angular/router";
-import { EditorFromTextArea } from "codemirror";
-import * as CodeMirror from "codemirror";
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/selection/active-line'
 import { ECharts, init } from "echarts";
@@ -21,14 +19,15 @@ export class ShowChartsComponent implements OnInit, AfterViewInit {
   /* autofocus setting applied to the created textarea */
   @Input() autoFocus = false;
 
-  codeMirror: EditorFromTextArea | undefined;
-
   myCharts: ECharts | undefined;
 
-  /**
-   * either global variable or required library
-   */
-  private _codeMirror: any;
+  editorOptions = {
+    language: "javascript",
+    roundedSelection: false,
+    scrollBeyondLastLine: false,
+    readOnly: false
+  };
+  code: string = '';
 
 
   isFocused = false;
@@ -52,22 +51,17 @@ export class ShowChartsComponent implements OnInit, AfterViewInit {
       return
     }
     this.chartsCodeService.getChartsCodeById(id).subscribe(data => {
-      if (this.codeMirror) {
-        this.codeMirror.setValue(data.code);
-        this.updateChartsOptions()
-      }
+      this.code = data.code
+      this.updateChartsOptions().then(() => {
+      })
     })
   }
 
   async updateChartsOptions() {
-    if (this.codeMirror) {
-      const options = await runCode(this.codeMirror.getValue(), this.ajaxService, this.myCharts);
-      this.myCharts?.clear()
-      debugger
-      if (options) {
-        debugger
-        this.myCharts?.setOption(options as any)
-      }
+    const options = await runCode(this.code, this.ajaxService, this.myCharts);
+    this.myCharts?.clear()
+    if (options) {
+      this.myCharts?.setOption(options as any)
     }
   }
 
@@ -77,15 +71,6 @@ export class ShowChartsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this._ngZone.runOutsideAngular(() => {
-      if (this.ref) {
-        this.codeMirror = CodeMirror.fromTextArea(
-          this.ref.nativeElement,{
-            mode: 'javascript',
-            styleActiveLine: true,
-            lineNumbers: true
-          }
-        );
-      }
       if (this.echarts) {
         this.myCharts = init(this.echarts.nativeElement)
       }

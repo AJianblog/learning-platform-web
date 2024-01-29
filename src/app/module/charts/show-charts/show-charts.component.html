@@ -11,7 +11,7 @@
         </button>
       </div>
     </div>
-    <textarea class="codemirror" #ref></textarea>
+    <h-monaco-editor [options]="editorOptions" [(ngModel)]="code"></h-monaco-editor>
   </div>
   <div class="show-charts-right">
     <div class="charts" #charts></div>

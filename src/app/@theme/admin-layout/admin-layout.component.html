@@ -1,13 +1,21 @@
-<app-header></app-header>
-<mat-drawer-container class="drawer-container">
-  <mat-drawer #drawer [mode]="mode" [opened]="opened">
-    <app-side-menu [menus]="menus"></app-side-menu>
-  </mat-drawer>
-  <div class="nav-bar">
-    <span nz-icon nzType="menu" nzTheme="outline" class="menu" (click)="drawer.toggle()"></span>
-  </div>
-  <div class="drawer-main">
-    <router-outlet></router-outlet>
-  </div>
-</mat-drawer-container>
-
+<nz-layout>
+  <nz-sider
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+    nzTheme="dark"
+  >
+    <app-side-menu
+      [menus]="menus"
+      [inlineCollapsed]="isCollapsed"
+      (toggleCollapsed)="toggleCollapsed()"
+    ></app-side-menu>
+  </nz-sider>
+  <nz-layout>
+    <app-header></app-header>
+    <app-tabs></app-tabs>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

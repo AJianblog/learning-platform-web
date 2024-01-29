@@ -136,7 +136,7 @@ export class ArticleTagComponent implements OnInit {
     const drawerRef = this.drawerService.create<ArticleTagInfoComponent, {
       articleType: ArticleType[],
       articleTag: ArticleTag
-    }, ArticleTag>({
+    }>({
       nzTitle: title,
       nzContent: ArticleTagInfoComponent,
       nzWidth: getFitWidth(),

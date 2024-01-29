@@ -20,7 +20,7 @@
   <div class="custom-node" (contextmenu)="contextMenu($event, menu)">
       <span
         nz-icon
-        [nzType]="node.isExpanded ? 'folder-open' : 'folder'"
+        [nzType]="node.icon"
         (click)="openFolder(node)"
       ></span>
     <span
@@ -31,7 +31,7 @@
 
 <nz-dropdown-menu #menu="nzDropdownMenu">
   <ul nz-menu>
-    <li nz-menu-item (click)="selectDropdown()">Action 1</li>
-    <li nz-menu-item (click)="selectDropdown()">Action 2</li>
+    <li nz-menu-item (click)="selectDropdown()">编辑目录</li>
+    <li nz-menu-item (click)="selectDropdown()">创建目录</li>
   </ul>
 </nz-dropdown-menu>

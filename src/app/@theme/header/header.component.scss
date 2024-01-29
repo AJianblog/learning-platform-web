@@ -1,49 +1,38 @@
 .mat-toolbar-single-row {
   height: 56px;
-  padding: 8px 16px;
 }
 
-.toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  color: #ffffff;
-  z-index: 5;
-  font-size: .9rem;
+nz-header {
+  background: #fff;
+  padding: 0 16px;
+  height: 48px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  position: fixed;
+  top: 0;
+  width: calc(100% - 200px);
+}
 
-  .header-left {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.header-fill {
+  height: 48px;
+}
 
-    .logo img {
-      width: 35px;
-      height: 35px;
-    }
+.login-box {
+  cursor: pointer;
 
-    .title {
-      margin-left: 10px;
-    }
+  &:hover {
+    color: #21d4fd;
   }
+}
 
-  .login-box {
-    cursor: pointer;
-
-    &:hover {
-      color: #21d4fd;
-    }
-  }
-
-  .avatar {
-    cursor: pointer;
-  }
+.avatar {
+  cursor: pointer;
 }
 
 .toolbar-empty-box {
-  height: 56px;
+  height: 100%;
   width: 100%;
 }
 

@@ -7,19 +7,25 @@ import { ThemeModule } from "../../@theme/theme.module";
 import { ChartsHomeComponent } from './charts-home/charts-home.component';
 import { ZorroModule } from "../../@zorro/zorroModule";
 import { ShowChartsComponent } from './show-charts/show-charts.component';
+import { SynchronizationComponent } from './synchronization/synchronization.component';
+import { EditorModule } from "editor";
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     ChartsComponent,
     ChartsHomeComponent,
-    ShowChartsComponent
+    ShowChartsComponent,
+    SynchronizationComponent
   ],
   imports: [
     CommonModule,
     ChartsRoutingModule,
     ThemeModule,
-    ZorroModule
+    ZorroModule,
+    EditorModule,
+    FormsModule
   ]
 })
 export class ChartsModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../@core/system/service/user.service";
 import { setToken } from "../../utils/localStorageMessage";
 import { Router } from "@angular/router";
@@ -14,11 +14,11 @@ export class LoginComponent implements OnInit {
   /**
    * 登录表单控件
    */
-  loginFormGroup: FormGroup;
+  loginFormGroup: UntypedFormGroup;
 
   loginButtonLoading: boolean = false;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: UntypedFormBuilder, private userService: UserService, private router: Router) {
     this.loginFormGroup = this.fb.group({
       account: [null, Validators.compose([Validators.required, Validators.email])],
       password: [null, Validators.compose([Validators.required])]
@@ -66,11 +66,11 @@ export class LoginComponent implements OnInit {
     return ''
   }
 
-  get account(): FormControl {
-    return this.loginFormGroup.get('account') as FormControl;
+  get account(): UntypedFormControl {
+    return this.loginFormGroup.get('account') as UntypedFormControl;
   }
 
-  get password(): FormControl {
-    return this.loginFormGroup.get('password') as FormControl;
+  get password(): UntypedFormControl {
+    return this.loginFormGroup.get('password') as UntypedFormControl;
   }
 }
